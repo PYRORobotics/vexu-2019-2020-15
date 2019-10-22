@@ -18,11 +18,12 @@
 void opcontrol() {
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
     okapi::ChassisControllerIntegrated driveController = okapi::ChassisControllerFactory::create(
-            {-8,9}, {-18,19}
+            {7,9}, {18,19}
     );
 	okapi::MotorGroup intake({1,-2});
 	okapi::Motor ramp(3);
     okapi::Motor tilt(4);
+    tilt.set_brake_mode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
 	while (true) {
         if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)){
             intake.moveVoltage(12000);
