@@ -14,18 +14,29 @@
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+	pros::Task update_controller_values_task(update_controller_values, NULL);
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
 	pros::Motor left_mtr(1);
 	pros::Motor right_mtr(2);
+	Profile BrandonProf("profile-Brandon");
+
+	Active_Profile = BrandonProf;
+
 	while (true) {
 		pros::lcd::print(0, "%d %d %d", (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
 		                 (pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
 		                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);
-		int left = master.get_analog(ANALOG_LEFT_Y);
-		int right = master.get_analog(ANALOG_RIGHT_Y);
 
-		left_mtr = left;
-		right_mtr = right;
+		// driveLift(controller_2_values[LY]); //-127->127
+		if(Active_Profile.button_map["drive"].second != Not_Assigned)
+		{
+			right_mtr = (Active_Profile.button_map["drive"].first == &Controller_1)?
+			 						controller_1_values[Active_Profile.button_map["drive"].second]:
+									controller_2_values[Active_Profile.button_map["drive"].second];
+		}
+
+
+
 		pros::delay(20);
 	}
 }
