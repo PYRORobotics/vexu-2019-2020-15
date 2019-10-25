@@ -13,29 +13,51 @@
  * operator control task will be stopped. Re-enabling the robot will restart the
  * task, not resume it from where it left off.
  */
+
+
 void opcontrol() {
-	pros::Task update_controller_values_task(update_controller_values, NULL);
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
-	pros::Motor left_mtr(1);
-	pros::Motor right_mtr(2);
-	Profile BrandonProf("profile-Brandon");
-
-	Active_Profile = BrandonProf;
-
+    okapi::ChassisControllerIntegrated driveController = okapi::ChassisControllerFactory::create(
+            {7,9}, {18,19}
+    );
+	okapi::MotorGroup intake({1,-2});
+	okapi::Motor ramp(3);
+    okapi::Motor tilt(4);
+    tilt.set_brake_mode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
 	while (true) {
-		pros::lcd::print(0, "%d %d %d", (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
-		                 (pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
-		                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);
+        if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)){
+            intake.moveVoltage(12000);
+        }
+        else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)){
+            intake.moveVoltage(-12000);
+        }
+        else{
+            intake.moveVoltage(0);
+        }
 
-		// driveLift(controller_2_values[LY]); //-127->127
-		if(Active_Profile.button_map["drive"].second != Not_Assigned)
-		{
-			right_mtr = (Active_Profile.button_map["drive"].first == &Controller_1)?
-			 						controller_1_values[Active_Profile.button_map["drive"].second]:
-									controller_2_values[Active_Profile.button_map["drive"].second];
-		}
+        driveController.tank((float) master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) / 127,
+                             (float) -master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y) / 127,
+                             0.05);
 
+        if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)){
+            ramp.moveVoltage(12000);
+        }
+        else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)){
+            ramp.moveVoltage(-12000);
+        }
+        else{
+            ramp.moveVoltage(0);
+        }
 
+        if(master.get_digital(pros::E_CONTROLLER_DIGITAL_UP)){
+            tilt.moveVelocity(50);
+        }
+        else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)){
+            tilt.moveVelocity(-50);
+        }
+        else{
+            tilt.moveVelocity(0);
+        }
 
 		pros::delay(20);
 	}
