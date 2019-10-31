@@ -15,49 +15,19 @@
  */
 
 
-void opcontrol() {
+void opcontrol()
+{
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
-    okapi::ChassisControllerIntegrated driveController = okapi::ChassisControllerFactory::create(
-            {7,9}, {18,19}
-    );
-	okapi::MotorGroup intake({1,-2});
-	okapi::Motor ramp(3);
-    okapi::Motor tilt(4);
-    tilt.set_brake_mode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
-	while (true) {
-        if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)){
-            intake.moveVoltage(12000);
-        }
-        else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)){
-            intake.moveVoltage(-12000);
-        }
-        else{
-            intake.moveVoltage(0);
-        }
+	pros::Task intaketask(intake.teleop);
+	pros::Task traytask(tray.teleop);
+	while(1)
+	{
+		chassis.driveController.arcade((float) master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X) / 127,
+													 (float) master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) / 127,
+													 0.05);
 
-        driveController.tank((float) master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) / 127,
-                             (float) -master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y) / 127,
-                             0.05);
-
-        if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)){
-            ramp.moveVoltage(12000);
-        }
-        else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)){
-            ramp.moveVoltage(-12000);
-        }
-        else{
-            ramp.moveVoltage(0);
-        }
-
-        if(master.get_digital(pros::E_CONTROLLER_DIGITAL_UP)){
-            tilt.moveVelocity(50);
-        }
-        else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)){
-            tilt.moveVelocity(-50);
-        }
-        else{
-            tilt.moveVelocity(0);
-        }
+	  // intake.teleop(NULL);
+		// tray.teleop(NULL);
 
 		pros::delay(20);
 	}
