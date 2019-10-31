@@ -27,7 +27,7 @@ namespace okapi
           }
           else if(controller_master.get_digital(pros::E_CONTROLLER_DIGITAL_R2))
           {
-            motors.moveVelocity(-600);
+            motors.moveVelocity(-80);
           }
           else
           {

@@ -39,12 +39,12 @@ namespace okapi
           if(controller_master.get_digital(pros::E_CONTROLLER_DIGITAL_A))
           {
             //tilt.moveAbsolute(30, 50);
-            tilt.moveVelocity(50);
+            tilt.moveVelocity(20);
           }
           else if(controller_master.get_digital(pros::E_CONTROLLER_DIGITAL_B))
           {
             //tilt.moveAbsolute(0, 50);
-            tilt.moveVelocity(-50);
+            tilt.moveVelocity(-20);
           }
           else
           {
