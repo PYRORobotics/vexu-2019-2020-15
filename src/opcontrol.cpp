@@ -22,7 +22,7 @@ void opcontrol()
 	pros::Task traytask(tray.teleop);
 	while(1)
 	{
-		chassis.driveController.arcade((float) master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X) * master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X) * 0.0065 / 127,
+		chassis.driveController.arcade((float) master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X) * master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X) * master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X)* 0.0025/127,
 													 (float) master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) / 127,
 													 0.05);
 
