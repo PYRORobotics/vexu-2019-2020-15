@@ -78,6 +78,8 @@ void autonomous() {
     chassis.MotionController.waitUntilSettled();
   }
 
+  pros::delay(2500);
+
   tray.intake.move_velocity(0); //Intake, stop, bruh
   intake.motors.moveVelocity(0); //You too, tray
 
