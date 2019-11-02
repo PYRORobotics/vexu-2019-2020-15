@@ -32,16 +32,12 @@ void autonomous() {
   tray.intake.move_velocity(-600);
 
   chassis.MotionController.setTarget("1f_Collect_Cubes_1", false);  //Drive forward to collect dem' cubes
-  pros::delay(1000);
   chassis.MotionController.waitUntilSettled();
   chassis.MotionController.setTarget("1f_Collect_Cubes_1", false);  //Drive forward to collect dem' cubes
-  pros::delay(1000);
   chassis.MotionController.waitUntilSettled();
   chassis.MotionController.setTarget("1f_Collect_Cubes_1", false);  //Drive forward to collect dem' cubes
-  pros::delay(1000);
   chassis.MotionController.waitUntilSettled();
   chassis.MotionController.setTarget("1f_Collect_Cubes_1", false);  //Drive forward to collect dem' cubes
-  pros::delay(1000);
   chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{20_in,0_in,0_deg}}, "1f_Move_To_Score");
   chassis.MotionController.waitUntilSettled();
 
