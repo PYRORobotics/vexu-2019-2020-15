@@ -25,9 +25,11 @@ void autonomous() {
 
   intake.motors.moveVelocity(600);
 
-  pros::delay(2000);
+  pros::delay(500);
 
   tray.tilt.moveAbsolute(0, 80);
+
+pros::delay(2000);
 
   tray.intake.move_velocity(-600);
 
