@@ -48,7 +48,7 @@ void autonomous() {
   else if (CUBE_6 == 1) {
     chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{33_in,0_in,0_deg}}, "1f_Move_To_Collect_Final_Cube");
 
-    pros::delay(2250);
+    pros::delay(2000);
   }
   chassis.MotionController.waitUntilSettled();
   if (CUBE_6 == 1) {
@@ -78,7 +78,7 @@ void autonomous() {
     chassis.MotionController.waitUntilSettled();
   }
 
-  pros::delay(2250);
+  pros::delay(2000);
 
   tray.intake.move_velocity(0); //Intake, stop, bruh
 
