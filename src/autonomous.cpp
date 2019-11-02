@@ -29,9 +29,9 @@ void autonomous() {
 
   tray.tilt.moveAbsolute(0, 80);
 
-pros::delay(2000);
-
   tray.intake.move_velocity(-600);
+
+  pros::delay(2000);
 
   chassis.MotionController.setTarget("1f_Collect_Cubes_1", false);  //Drive forward to collect dem' cubes
   chassis.MotionController.waitUntilSettled();
