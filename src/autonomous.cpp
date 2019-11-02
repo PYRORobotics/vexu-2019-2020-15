@@ -89,7 +89,7 @@ void autonomous() {
   chassis.MotionController.waitUntilSettled();
 
   intake.motors.moveVelocity(0); //You too, tray
-  tray.tilt.moveAbsolute(450, 25);
+  tray.tilt.moveAbsolute(460, 25);
 
   pros::delay(4000);
   tray.tilt.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
@@ -100,7 +100,6 @@ void autonomous() {
   chassis.MotionController.waitUntilSettled();
 
   intake.motors.moveVelocity(0);
-  tray.tilt.setBrakeMode(okapi::AbstractMotor::brakeMode::brake);
   tray.tilt.moveAbsolute(0, 80);
   tray.intake.move_velocity(0);
 }
