@@ -52,11 +52,12 @@ void autonomous() {
   chassis.MotionController.setTarget("1f_Move_To_Score", false);  //Drive forward to score
   chassis.MotionController.waitUntilSettled();
 
-  tray.tilt.moveAbsolute(420, 35);
+  tray.tilt.moveAbsolute(450, 35);
 
   pros::delay(3000);
 
   intake.motors.moveVelocity(-600);
+  tray.intake.move_velocity(-600);
   chassis.MotionController.setTarget("1f_Move_To_Score", true);  //Drive backwards after score
   chassis.MotionController.waitUntilSettled();
 
