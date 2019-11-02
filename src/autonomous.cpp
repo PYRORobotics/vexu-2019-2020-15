@@ -92,7 +92,8 @@ void autonomous() {
   tray.tilt.moveAbsolute(450, 25);
 
   pros::delay(4000);
-
+  tray.tilt.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+  tray.tilt.moveVelocity(0);
   intake.motors.moveVelocity(-600);
   tray.intake.move_velocity(-600);
   chassis.MotionController.setTarget("1f_Move_Back_From_Score", true);  //Drive backwards after score
