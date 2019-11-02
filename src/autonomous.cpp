@@ -50,7 +50,7 @@ void autonomous() {
   chassis.MotionController.setTarget("1f_Move_To_Score", false);  //Drive forward to score
   chassis.MotionController.waitUntilSettled();
 
-  tray.tilt.moveAbsolute(500, 10);
+  tray.tilt.moveAbsolute(400, 35);
 
   pros::delay(2000);
 
