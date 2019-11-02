@@ -14,7 +14,7 @@
  */
 void autonomous() {
 
-  const int COLOR = 0;  //0=red  1=blue
+  const int COLOR = 1;  //0=red  1=blue
   const int CUBE_6 = 0; //0=no   1=yes
 
   chassis.MotionController.setTarget("1f_Move_Forward", false);  //Drive forward to initiate
@@ -92,7 +92,6 @@ void autonomous() {
   tray.tilt.moveAbsolute(460, 25);
 
   pros::delay(4000);
-  tray.tilt.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
   tray.tilt.moveVelocity(0);
   intake.motors.moveVelocity(-600);
   tray.intake.move_velocity(-600);
