@@ -25,7 +25,7 @@ void autonomous() {
 
   intake.motors.moveVelocity(600);
 
-  pros::delay(1000);
+  pros::delay(2000);
 
   tray.tilt.moveAbsolute(0, 80);
 
@@ -41,7 +41,7 @@ void autonomous() {
   chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{35_in,0_in,0_deg}}, "1f_Move_To_Score");
   chassis.MotionController.waitUntilSettled();
 
-  pros::delay(2000);
+  pros::delay(2500);
 
   tray.intake.move_velocity(0); //Intake, stop, bruh
   intake.motors.moveVelocity(0); //You too, tray
@@ -52,13 +52,12 @@ void autonomous() {
 
   tray.tilt.moveAbsolute(420, 35);
 
-  pros::delay(2000);
+  pros::delay(1000);
 
-  tray.tilt.moveAbsolute(0, 80);
-  intake.motors.moveVelocity(-600); //You too, tray
-
-  pros::delay(500);
-
+  intake.motors.moveVelocity(-600);
   chassis.MotionController.setTarget("1f_Move_To_Score", true);  //Drive backwards after score
   chassis.MotionController.waitUntilSettled();
+
+  intake.motors.moveVelocity(0);
+  tray.tilt.moveAbsolute(0, 80);
 }
