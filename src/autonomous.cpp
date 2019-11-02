@@ -50,17 +50,19 @@ void autonomous() {
 
   chassis.driveController.turnAngle(125_deg); //Swing dat' ass around
   chassis.MotionController.setTarget("1f_Move_To_Score", false);  //Drive forward to score
+  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{25_in,0_in,0_deg}}, "1f_Move_Back_From_Score");
   chassis.MotionController.waitUntilSettled();
 
-  tray.tilt.moveAbsolute(450, 35);
+  tray.tilt.moveAbsolute(450, 25);
 
-  pros::delay(3000);
+  pros::delay(4000);
 
   intake.motors.moveVelocity(-600);
   tray.intake.move_velocity(-600);
-  chassis.MotionController.setTarget("1f_Move_To_Score", true);  //Drive backwards after score
+  chassis.MotionController.setTarget("1f_Move_Back_From_Score", true);  //Drive backwards after score
   chassis.MotionController.waitUntilSettled();
 
   intake.motors.moveVelocity(0);
   tray.tilt.moveAbsolute(0, 80);
+  tray.intake.move_velocity(0);
 }
