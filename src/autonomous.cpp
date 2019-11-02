@@ -52,7 +52,7 @@ void autonomous() {
   }
   chassis.MotionController.waitUntilSettled();
   if (CUBE_6 == 1) {
-    tray.intake.move_velocity(0); //Intake, stop, bruh
+    //tray.intake.move_velocity(0); //Intake, stop, bruh
     intake.motors.moveVelocity(0); //You too, tray
     chassis.MotionController.setTarget("1f_Move_To_Collect_Final_Cube", true);  //Drive forward to collect dem' cubes
     chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{12.5_in,0_in,0_deg}}, "1f_Move_To_Collect_Final_Cube_2");
@@ -80,7 +80,7 @@ void autonomous() {
 
   pros::delay(2500);
 
-  tray.intake.move_velocity(0); //Intake, stop, bruh
+  //tray.intake.move_velocity(0); //Intake, stop, bruh
   intake.motors.moveVelocity(0); //You too, tray
 
   if (COLOR == 0) chassis.driveController.turnAngle(125_deg); //Swing dat' ass around red
