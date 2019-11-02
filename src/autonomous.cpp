@@ -42,7 +42,9 @@ void autonomous() {
   chassis.MotionController.setTarget("1f_Collect_Cubes_1", false);  //Drive forward to collect dem' cubes
   chassis.MotionController.waitUntilSettled();
   chassis.MotionController.setTarget("1f_Collect_Cubes_1", false);  //Drive forward to collect dem' cubes
-  if (CUBE_6 == 0) chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{20_in,0_in,0_deg}}, "1f_Move_Back_To_Score");
+  if (CUBE_6 == 0) {
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{35_in,0_in,0_deg}}, "1f_Move_To_Score");
+  }
   else if (CUBE_6 == 1) {
     chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{33_in,0_in,0_deg}}, "1f_Move_To_Collect_Final_Cube");
 
@@ -72,7 +74,7 @@ void autonomous() {
     if (COLOR == 0) chassis.driveController.turnAngle(70_deg); //Swing dat' ass around red
     else if (COLOR == 1) chassis.driveController.turnAngle(-70_deg); //Swing dat' ass around blue
     chassis.MotionController.setTarget("1f_Move_To_Collect_Final_Cube", false);  //Drive forward to collect dem' cubes
-    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{20_in,0_in,0_deg}}, "1f_Move_Back_To_Score");
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{35_in,0_in,0_deg}}, "1f_Move_To_Score");
     chassis.MotionController.waitUntilSettled();
   }
 
@@ -80,12 +82,8 @@ void autonomous() {
 
   tray.intake.move_velocity(0); //Intake, stop, bruh
 
-  chassis.MotionController.setTarget("1f_Move_Back_To_Score", true);  //Drive backward to score
-  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{35_in,0_in,0_deg}}, "1f_Move_To_Score");
-  chassis.MotionController.waitUntilSettled();
-
-  if (COLOR == 0) chassis.driveController.turnAngle(135_deg); //Swing dat' ass around red //125_deg
-  else if (COLOR == 1) chassis.driveController.turnAngle(-135_deg); //Swing dat' ass around blue //125_deg
+  if (COLOR == 0) chassis.driveController.turnAngle(125_deg); //Swing dat' ass around red
+  else if (COLOR == 1) chassis.driveController.turnAngle(-125_deg); //Swing dat' ass around blue
   chassis.MotionController.setTarget("1f_Move_To_Score", false);  //Drive forward to score
   chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{25_in,0_in,0_deg}}, "1f_Move_Back_From_Score");
   chassis.MotionController.waitUntilSettled();
