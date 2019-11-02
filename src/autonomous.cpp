@@ -14,8 +14,8 @@
  */
 void autonomous() {
 
-  const int COLOR = 0;  //0=red  1=blue
-  const int CUBE_6 = 1; //0=no   1=yes
+  const int COLOR = 1;  //0=red  1=blue
+  const int CUBE_6 = 0; //0=no   1=yes
 
   chassis.MotionController.setTarget("1f_Move_Forward", false);  //Drive forward to initiate
   chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{6.5_in,0_in,0_deg}}, "1f_Collect_Cubes_1");
@@ -46,19 +46,25 @@ void autonomous() {
     chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{35_in,0_in,0_deg}}, "1f_Move_To_Score");
   }
   else if (CUBE_6 == 1) {
-    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{47_in,0_in,0_deg}}, "1f_Move_To_Collect_Final_Cube");
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{33_in,0_in,0_deg}}, "1f_Move_To_Collect_Final_Cube");
 
     pros::delay(2500);
   }
   chassis.MotionController.waitUntilSettled();
   if (CUBE_6 == 1) {
+    tray.intake.move_velocity(0); //Intake, stop, bruh
+    intake.motors.moveVelocity(0); //You too, tray
     chassis.MotionController.setTarget("1f_Move_To_Collect_Final_Cube", true);  //Drive forward to collect dem' cubes
     chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{12.5_in,0_in,0_deg}}, "1f_Move_To_Collect_Final_Cube_2");
     chassis.MotionController.waitUntilSettled();
-    if (COLOR == 0) chassis.driveController.turnAngle(90_deg); //Swing dat' ass around red
-    else if (COLOR == 1) chassis.driveController.turnAngle(-90_deg); //Swing dat' ass around blue
+    if (COLOR == 0) chassis.driveController.turnAngle(-70_deg); //Swing dat' ass around red
+    else if (COLOR == 1) chassis.driveController.turnAngle(70_deg); //Swing dat' ass around blue
     chassis.MotionController.setTarget("1f_Move_To_Collect_Final_Cube_2", false); //Drive forward to collect final cube
     chassis.MotionController.waitUntilSettled();
+
+    intake.motors.moveVelocity(600);
+    tray.intake.move_velocity(-600);
+
     chassis.MotionController.setTarget("1f_Collect_Cubes_1", false);  //Drive forward to collect dem' cubes
     chassis.MotionController.waitUntilSettled();
 
@@ -66,8 +72,8 @@ void autonomous() {
     chassis.MotionController.waitUntilSettled();
     chassis.MotionController.setTarget("1f_Move_To_Collect_Final_Cube_2", true); //Drive forward to collect final cube
     chassis.MotionController.waitUntilSettled();
-    if (COLOR == 0) chassis.driveController.turnAngle(-90_deg); //Swing dat' ass around red
-    else if (COLOR == 1) chassis.driveController.turnAngle(90_deg); //Swing dat' ass around blue
+    if (COLOR == 0) chassis.driveController.turnAngle(70_deg); //Swing dat' ass around red
+    else if (COLOR == 1) chassis.driveController.turnAngle(-70_deg); //Swing dat' ass around blue
     chassis.MotionController.setTarget("1f_Move_To_Collect_Final_Cube", false);  //Drive forward to collect dem' cubes
     chassis.MotionController.waitUntilSettled();
   }
