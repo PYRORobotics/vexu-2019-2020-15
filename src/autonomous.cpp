@@ -71,7 +71,15 @@ void autonomous() {
   tray.intake.move_velocity(0);
   intake.motors.moveVelocity(0);
 
-  chassis.MotionController.setTarget("1f_Collect_Return_Cubes", true);  //Drive forward to collect dem' cubes
+  chassis.MotionController.setTarget("1f_Collect_Cubes_2", true);  //Drive forward to collect dem' cubes
+  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{8_in,4_in,90_deg}}, "1f_Swing_Dat_Ass_Back_Around");
+  chassis.MotionController.waitUntilSettled();
+
+  chassis.MotionController.setTarget("1f_Swing_Dat_Ass_Back_Around", true);  //Drive forward to collect dem' cubes
+  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{4_in,16_in,90_deg}}, "1f_Swing_Dat_Ass_Back_Around_2");
+  chassis.MotionController.waitUntilSettled();
+
+  chassis.MotionController.setTarget("1f_Swing_Dat_Ass_Back_Around_2", false);  //Drive forward to collect dem' cubes
   chassis.MotionController.waitUntilSettled();
 
   pros::delay(2000);
