@@ -41,12 +41,10 @@ void autonomous() {
   chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{35_in,0_in,0_deg}}, "1f_Move_To_Score");
   chassis.MotionController.waitUntilSettled();
 
-  pros::delay(500);
+  pros::delay(2000);
 
   tray.intake.move_velocity(0); //Intake, stop, bruh
   intake.motors.moveVelocity(0); //You too, tray
-
-  pros::delay(2000);
 
   chassis.driveController.turnAngle(130_deg); //Swing dat' ass around
   chassis.MotionController.setTarget("1f_Move_To_Score", false);  //Drive forward to score
