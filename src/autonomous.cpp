@@ -33,7 +33,7 @@ void autonomous() {
 
   chassis.MotionController.setTarget("1f_Collect_Cubes_1", false);  //Drive forward to collect dem' cubes
   chassis.MotionController.waitUntilSettled();
-  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{12_in,4_in,30_deg}}, "1f_Collect_Cubes_2");
+  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{12_in,3_in,30_deg}}, "1f_Collect_Cubes_2");
   chassis.MotionController.setTarget("1f_Collect_Cubes_1", false);  //Drive forward to collect dem' cubes
   chassis.MotionController.waitUntilSettled();
   chassis.MotionController.setTarget("1f_Collect_Cubes_1", false);  //Drive forward to collect dem' cubes
@@ -55,8 +55,8 @@ void autonomous() {
   chassis.MotionController.waitUntilSettled();
 
   chassis.driveController.turnAngle(60_deg);
-  chassis.driveController.turnAngle(600_deg);
-  chassis.driveController.turnAngle(600_deg);
+  chassis.driveController.turnAngle(60_deg);
+  chassis.driveController.turnAngle(60_deg);
   chassis.MotionController.setTarget("1f_Move_Forward", false);  //Drive forward to collect dem' cubes
   // chassis.MotionController.setTarget("1f_Swing_Dat_Ass_Back_Around", true);  //Drive forward to collect dem' cubes
   // chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{4_in,16_in,90_deg}}, "1f_Swing_Dat_Ass_Back_Around_2");
