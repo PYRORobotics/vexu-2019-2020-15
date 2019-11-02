@@ -17,7 +17,6 @@
 
 void opcontrol()
 {
-	tray.tilt.setBrakeMode(okapi::AbstractMotor::brakeMode::brake);
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
 	pros::Task intaketask(intake.teleop);
 	pros::Task traytask(tray.teleop);
