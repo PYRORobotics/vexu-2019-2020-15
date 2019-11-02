@@ -14,6 +14,8 @@
  */
 void autonomous() {
 
+  const int COLOR = 1; //0=red 1=blue
+
 
   chassis.MotionController.setTarget("1f_Move_Forward", false);  //Drive forward to initiate
   chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{6.5_in,0_in,0_deg}}, "1f_Collect_Cubes_1");
@@ -48,7 +50,8 @@ void autonomous() {
   tray.intake.move_velocity(0); //Intake, stop, bruh
   intake.motors.moveVelocity(0); //You too, tray
 
-  chassis.driveController.turnAngle(125_deg); //Swing dat' ass around
+  if (COLOR == 0) chassis.driveController.turnAngle(125_deg); //Swing dat' ass around red
+  else if (COLOR == 1) chassis.driveController.turnAngle(-125_deg); //Swing dat' ass around blue
   chassis.MotionController.setTarget("1f_Move_To_Score", false);  //Drive forward to score
   chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{25_in,0_in,0_deg}}, "1f_Move_Back_From_Score");
   chassis.MotionController.waitUntilSettled();
