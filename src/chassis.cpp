@@ -59,7 +59,7 @@ PYROChassis chassis;
 //------------------------------------------------------------------------------
 PYROChassis::PYROChassis(): PositionPIDController(20, 80, 10, 5.5, 1.5, 0.000005),
                             left_motors({M_CHASSIS_LF,M_CHASSIS_LR}),
-                            right_motors({M_CHASSIS_RF,M_CHASSIS_RR}),
+                            right_motors({-M_CHASSIS_RF,-M_CHASSIS_RR}),
                             driveController(ChassisControllerFactory::create(
                                     left_motors, right_motors,
                                     okapi::IterativePosPIDController::Gains{0.00001, 0.00001, 0.000006},   //straight

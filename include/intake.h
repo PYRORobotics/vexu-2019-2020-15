@@ -11,9 +11,10 @@ namespace okapi
   class PYROIntake {
     private:
 
-      static okapi::MotorGroup motors;
+      //static okapi::MotorGroup motors;
 
     public:
+      static okapi::MotorGroup motors;
       PYROIntake();
       static void teleop(void*)
       {

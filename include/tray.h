@@ -12,10 +12,12 @@ namespace okapi
   class PYROTray {
     private:
 
-      static Motor intake;
-      static Motor tilt;
+      //static Motor intake;
+      //static Motor tilt;
 
     public:
+      static Motor intake;
+      static Motor tilt;
       PYROTray();
       static void teleop(void*)
       {
