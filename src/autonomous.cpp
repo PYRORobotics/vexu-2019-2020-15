@@ -51,6 +51,7 @@ void autonomous() {
   chassis.MotionController.waitUntilSettled();
 
   tray.tilt.moveAbsolute(420, 35);
+  tray.tilt.waitUntilSettled();
 
   pros::delay(1000);
 
