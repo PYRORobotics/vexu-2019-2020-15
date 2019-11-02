@@ -57,6 +57,8 @@ void autonomous() {
   tray.tilt.moveAbsolute(0, 80);
   intake.motors.moveVelocity(-600); //You too, tray
 
+  pros::delay(500);
+
   chassis.MotionController.setTarget("1f_Move_To_Score", true);  //Drive backwards after score
   chassis.MotionController.waitUntilSettled();
 }
