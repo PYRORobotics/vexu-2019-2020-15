@@ -46,7 +46,7 @@ void autonomous() {
   tray.intake.move_velocity(0); //Intake, stop, bruh
   intake.motors.moveVelocity(0); //You too, tray
 
-  chassis.driveController.turnAngle(130_deg); //Swing dat' ass around
+  chassis.driveController.turnAngle(125_deg); //Swing dat' ass around
   chassis.MotionController.setTarget("1f_Move_To_Score", false);  //Drive forward to score
   chassis.MotionController.waitUntilSettled();
 
