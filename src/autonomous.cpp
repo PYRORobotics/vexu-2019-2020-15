@@ -80,8 +80,7 @@ void autonomous() {
 
   pros::delay(2500);
 
-  //tray.intake.move_velocity(0); //Intake, stop, bruh
-  intake.motors.moveVelocity(0); //You too, tray
+  tray.intake.move_velocity(0); //Intake, stop, bruh
 
   if (COLOR == 0) chassis.driveController.turnAngle(125_deg); //Swing dat' ass around red
   else if (COLOR == 1) chassis.driveController.turnAngle(-125_deg); //Swing dat' ass around blue
@@ -89,6 +88,7 @@ void autonomous() {
   chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{25_in,0_in,0_deg}}, "1f_Move_Back_From_Score");
   chassis.MotionController.waitUntilSettled();
 
+  intake.motors.moveVelocity(0); //You too, tray
   tray.tilt.moveAbsolute(450, 25);
 
   pros::delay(4000);
