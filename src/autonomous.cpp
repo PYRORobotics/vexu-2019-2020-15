@@ -48,5 +48,14 @@ void autonomous() {
 
   chassis.driveController.turnAngle(130_deg); //Swing dat' ass around
   chassis.MotionController.setTarget("1f_Move_To_Score", false);  //Drive forward to score
+  chassis.MotionController.waitUntilSettled();
 
+  tray.tilt.moveAbsolute(500, 10);
+
+  pros::delay(2000);
+
+  tray.tilt.moveAbsolute(0, 80);
+
+  chassis.MotionController.setTarget("1f_Move_To_Score", true);  //Drive backwards after score
+  chassis.MotionController.waitUntilSettled();
 }
