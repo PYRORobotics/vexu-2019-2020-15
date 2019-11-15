@@ -53,8 +53,12 @@ void skillsAuto()
   chassis.driveController.turnAngle(-87_deg);
   chassis.MotionController.waitUntilSettled();
 
+  tray.intake.move_velocity(-600);
+
   chassis.MotionController.setTarget("5r", 1);  //Drive forward to collect dem' cubes
   chassis.MotionController.waitUntilSettled();
+
+  tray.intake.move_velocity(-600);
 
   tray.tilt.moveAbsolute(200, 600);
   pros::delay(200);
