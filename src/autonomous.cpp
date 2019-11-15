@@ -73,12 +73,12 @@ void skillsAuto()
 
   tray.intake.move_velocity(0);
 
-  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{26.5_in,0_in,0_deg}}, "7f");
+  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{25.5_in,0_in,0_deg}}, "score_cubes_1");
 
   chassis.driveController.turnAngle(-128_deg);
   chassis.MotionController.waitUntilSettled();
 
-  chassis.MotionController.setTarget("7f", 0);  //Drive forward to collect dem' cubes
+  chassis.MotionController.setTarget("score_cubes_1", 0);  //Drive forward to collect dem' cubes
   chassis.MotionController.waitUntilSettled();
 
   chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{13_in,0_in,0_deg}}, "8r");
