@@ -22,7 +22,8 @@ void initialize() {
 
 	pros::lcd::register_btn1_cb(on_center_button);
 
-	chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{16_in,0_in,0_deg}}, "1f_Move_Forward");
+chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{13_in,0_in,0_deg}}, "1fSKILLS_Move_Forward");
+chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{16_in,0_in,0_deg}}, "1f_Move_Forward");
 }
 
 /**
