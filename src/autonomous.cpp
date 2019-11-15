@@ -48,12 +48,12 @@ void skillsAuto()
   chassis.MotionController.setTarget("4r", 1);  //Drive forward to collect dem' cubes
   chassis.MotionController.waitUntilSettled();
 
+  tray.intake.move_velocity(0);
+
   chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{11.5_in,0_in,0_deg}}, "5r");
 
   chassis.driveController.turnAngle(-87_deg);
   chassis.MotionController.waitUntilSettled();
-
-  tray.intake.move_velocity(-600);
 
   chassis.MotionController.setTarget("5r", 1);  //Drive forward to collect dem' cubes
   chassis.MotionController.waitUntilSettled();
