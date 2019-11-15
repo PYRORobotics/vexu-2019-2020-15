@@ -73,12 +73,12 @@ void skillsAuto()
 
   tray.intake.move_velocity(0);
 
-  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{25.5_in,0_in,0_deg}}, "score_cubes_1");
+  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{26.5_in,0_in,0_deg}}, "7f");
 
   chassis.driveController.turnAngle(-128_deg);
   chassis.MotionController.waitUntilSettled();
 
-  chassis.MotionController.setTarget("score_cubes_1", 0);  //Drive forward to collect dem' cubes
+  chassis.MotionController.setTarget("7f", 0);  //Drive forward to collect dem' cubes
   chassis.MotionController.waitUntilSettled();
 
   chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{13_in,0_in,0_deg}}, "8r");
@@ -205,7 +205,7 @@ void autonomous() {
     if (COLOR == 0) chassis.driveController.turnAngle(70_deg); //Swing dat' ass around red
     else if (COLOR == 1) chassis.driveController.turnAngle(-70_deg); //Swing dat' ass around blue
     chassis.MotionController.setTarget("1f_Move_To_Collect_Final_Cube", false);  //Drive forward to collect dem' cubes
-    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{35_in,0_in,0_deg}}, "1f_Move_To_Score");
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{34_in,0_in,0_deg}}, "1f_Move_To_Score");
     chassis.MotionController.waitUntilSettled();
   }
 
