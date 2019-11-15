@@ -23,6 +23,7 @@ namespace okapi
       {
         pros::Controller controller_master(pros::E_CONTROLLER_MASTER);
         pros::Controller controller_partner(pros::E_CONTROLLER_PARTNER);
+        bool up = false;
         while(1)
         {
           if(controller_master.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
@@ -41,17 +42,36 @@ namespace okapi
           if(controller_master.get_digital(pros::E_CONTROLLER_DIGITAL_A))
           {
             //tilt.moveAbsolute(30, 50);
-            tilt.moveVelocity(20);
+            //tilt.moveVelocity(20);
+
+            int speed = 0.0011375 * tilt.getPosition() * tilt.getPosition()-0.91* tilt.getPosition()+200;
+            tilt.moveVelocity(speed);
           }
           else if(controller_master.get_digital(pros::E_CONTROLLER_DIGITAL_B))
           {
             //tilt.moveAbsolute(0, 50);
-            tilt.moveVelocity(-20);
+            //tilt.moveVelocity(-20);
+
+            int speed = 0.0005 * tilt.getPosition() * tilt.getPosition()-0.4* tilt.getPosition()+100;
+            tilt.moveVelocity(-170);
+
           }
           else
           {
             tilt.moveVelocity(0);
           }
+
+          if(controller_master.get_digital(pros::E_CONTROLLER_DIGITAL_X) && !up)
+          {
+            tilt.move_absolute(100, 100);
+            up = true;
+          }
+          else if(controller_master.get_digital(pros::E_CONTROLLER_DIGITAL_X) && up)
+          {
+            tilt.move_absolute(0.5, 100);
+            up = false;
+          }
+
 
           pros::delay(20);
         }
