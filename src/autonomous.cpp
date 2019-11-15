@@ -60,7 +60,7 @@ void skillsAuto()
 
   tray.intake.move_velocity(-600);
 
-  tray.tilt.moveAbsolute(200, 600);
+  tray.tilt.moveAbsolute(250, 600);
   pros::delay(200);
   tray.tilt.moveAbsolute(0, 100);
 
@@ -209,7 +209,7 @@ void autonomous() {
     if (COLOR == 0) chassis.driveController.turnAngle(70_deg); //Swing dat' ass around red
     else if (COLOR == 1) chassis.driveController.turnAngle(-70_deg); //Swing dat' ass around blue
     chassis.MotionController.setTarget("1f_Move_To_Collect_Final_Cube", false);  //Drive forward to collect dem' cubes
-    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{34_in,0_in,0_deg}}, "1f_Move_To_Score");
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{30_in,0_in,0_deg}}, "1f_Move_To_Score");
     chassis.MotionController.waitUntilSettled();
   }
 
