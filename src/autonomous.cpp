@@ -50,7 +50,7 @@ void skillsAuto()
 
   tray.intake.move_velocity(0);
 
-  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{11.5_in,0_in,0_deg}}, "5r");
+  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{12.5_in,0_in,0_deg}}, "5r");
 
   chassis.driveController.turnAngle(-87_deg);
   chassis.MotionController.waitUntilSettled();
@@ -77,7 +77,7 @@ void skillsAuto()
 
   tray.intake.move_velocity(0);
 
-  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{26.5_in,0_in,0_deg}}, "7f");
+  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{25.5_in,0_in,0_deg}}, "7f");
 
   chassis.driveController.turnAngle(-128_deg);
   chassis.MotionController.waitUntilSettled();
@@ -95,37 +95,37 @@ void skillsAuto()
   intake.motors.moveVelocity(-600);
   tray.intake.move_velocity(-600);
   chassis.MotionController.setTarget("8r", 1);  //Drive backwards after score
-  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{55_in,0_in,0_deg}}, "9f");
-  chassis.MotionController.waitUntilSettled();
-
-  chassis.driveController.turnAngle(-135_deg);
-  chassis.MotionController.waitUntilSettled();
-
-  chassis.driveController.driveVector(-0.5, 0);
-  pros::delay(1500);
-  chassis.driveController.driveVector(0, 0);
-
-
-  intake.motors.moveVelocity(600);
-  tray.tilt.moveAbsolute(0, 80);
-  tray.intake.move_velocity(-600);
-
-  chassis.MotionController.setTarget("9f", 0);  //Drive backwards after score
-  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{19_in,5.5_in,0_deg}}, "10s");
-  chassis.MotionController.waitUntilSettled();
-
-  chassis.MotionController.setTarget("10s", 0);  //Drive backwards after score
-  chassis.MotionController.waitUntilSettled();
-
-  for(int i = 0; i < 4; i++)
-  {
-    chassis.MotionController.setTarget("1f_Collect_Cubes_1", false);  //Drive forward to collect dem' cubes
-    chassis.MotionController.waitUntilSettled();
-    pros::delay(500);
-  }
-
-
-
+  // chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{55_in,0_in,0_deg}}, "9f");
+  // chassis.MotionController.waitUntilSettled();
+  //
+  // chassis.driveController.turnAngle(-135_deg);
+  // chassis.MotionController.waitUntilSettled();
+  //
+  // chassis.driveController.driveVector(-0.5, 0);
+  // pros::delay(1500);
+  // chassis.driveController.driveVector(0, 0);
+  //
+  //
+  // intake.motors.moveVelocity(600);
+  // tray.tilt.moveAbsolute(0, 80);
+  // tray.intake.move_velocity(-600);
+  //
+  // chassis.MotionController.setTarget("9f", 0);  //Drive backwards after score
+  // chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{19_in,5.5_in,0_deg}}, "10s");
+  // chassis.MotionController.waitUntilSettled();
+  //
+  // chassis.MotionController.setTarget("10s", 0);  //Drive backwards after score
+  // chassis.MotionController.waitUntilSettled();
+  //
+  // for(int i = 0; i < 4; i++)
+  // {
+  //   chassis.MotionController.setTarget("1f_Collect_Cubes_1", false);  //Drive forward to collect dem' cubes
+  //   chassis.MotionController.waitUntilSettled();
+  //   pros::delay(500);
+  // }
+  //
+  //
+  //
   intake.motors.moveVelocity(0);
   tray.tilt.moveAbsolute(0, 80);
   tray.intake.move_velocity(0);
