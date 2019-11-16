@@ -33,6 +33,7 @@ void skillsAuto()
     pros::delay(500);
   }
 
+  pros::delay(500);
 
   chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{18_in,4_in,0_deg}}, "3f");
 
