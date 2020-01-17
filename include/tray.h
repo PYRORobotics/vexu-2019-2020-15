@@ -52,8 +52,13 @@ namespace okapi
             //tilt.moveAbsolute(0, 50);
             //tilt.moveVelocity(-20);
 
-            int speed = 0.0005 * tilt.getPosition() * tilt.getPosition()-0.4* tilt.getPosition()+100;
-            tilt.moveVelocity(-170);
+            //old functionality
+            // int speed = 0.0005 * tilt.getPosition() * tilt.getPosition()-0.4* tilt.getPosition()+100;
+            // tilt.moveVelocity(-170);
+
+            //new functionality: return to home
+            tilt.moveVelocity(0);
+            tilt.moveAbsolute(0, 80);
 
           }
           else
