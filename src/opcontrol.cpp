@@ -18,8 +18,12 @@
 void opcontrol()
 {
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
+
+	tray.init();
+
 	pros::Task intaketask(intake.teleop);
 	pros::Task traytask(tray.teleop);
+
 	while(1)
 	{
 		chassis.driveController.arcade((float) master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) / 127,
@@ -28,7 +32,6 @@ void opcontrol()
 
 	  // intake.teleop(NULL);
 		// tray.teleop(NULL);
-
 		pros::delay(20);
 	}
 }
