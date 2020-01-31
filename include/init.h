@@ -12,7 +12,8 @@
 #define M_INTAKE_R 2
 #define M_TRAY_INTAKE 4
 #define M_TRAY_TILT 3
-#define M_TRAY_ARM 5
+#define M_TRAY_ARM_L 5
+#define M_TRAY_ARM_R 15
 
 
 

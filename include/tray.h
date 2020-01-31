@@ -19,22 +19,25 @@ namespace okapi
     public:
       // static Motor intake;
       static Motor tilt;
-      static Motor arm;
+      // static Motor armL;
+      // static Motor armR;
+      static okapi::MotorGroup arm_motors;
+
       PYROTray();
 
       static void init()
       {
-        arm.setBrakeMode(AbstractMotor::brakeMode::hold);
-        arm.moveRelative(500, 180);
-        PYROIntake::motors.moveVelocity(-600);
-        tilt.moveAbsolute(3650, 180);
-        pros::delay(5000);
-        tilt.moveAbsolute(0, 200);
-        arm.moveRelative(0, 180);
-        PYROIntake::motors.moveVelocity(0);
+        // arm.setBrakeMode(AbstractMotor::brakeMode::hold);
+        // arm.moveRelative(500, 180);
+        // PYROIntake::motors.moveVelocity(-600);
+        // tilt.moveAbsolute(3650, 180);
+        // pros::delay(5000);
+        // tilt.moveAbsolute(0, 200);
+        // arm.moveRelative(0, 180);
+        // PYROIntake::motors.moveVelocity(0);
       }
 
-      static void teleop(void*)
+      static void trayteleop(void*)
       {
         pros::Controller controller_master(pros::E_CONTROLLER_MASTER);
         pros::Controller controller_partner(pros::E_CONTROLLER_PARTNER);
@@ -61,9 +64,12 @@ namespace okapi
 
             // int speed = 0.0011375 * tilt.getPosition() * tilt.getPosition()-0.91* tilt.getPosition()+200;
             // tilt.moveVelocity(80);
-            tilt.moveAbsolute(3650, 180);
-
-            std::cout << tilt.getPosition() << std::endl;
+            tilt.moveAbsolute(1330, 180);
+            pros::delay(1000);
+            tilt.moveAbsolute(1330, 70);
+            // tilt.moveVelocity(100);
+            //
+            // std::cout << tilt.getPosition() << std::endl;
           }
           else if(controller_master.get_digital(pros::E_CONTROLLER_DIGITAL_B))
           {
@@ -77,6 +83,9 @@ namespace okapi
             //new functionality: return to home
             // tilt.moveVelocity(0);
             tilt.moveAbsolute(0, 200);
+            // tilt.moveVelocity(-100);
+            //
+            // std::cout << tilt.getPosition() << std::endl;
 
 
           }
@@ -97,16 +106,17 @@ namespace okapi
           }
 
           if(abs(controller_master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y)) > 5)
-            arm.moveVelocity(controller_master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y));
+            arm_motors.moveVelocity(controller_master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y));
           else
-            arm.moveVelocity(0);
+            arm_motors.moveVelocity(0);
 
-          std::cout << arm.getPosition() << std::endl;
+          std::cout << arm_motors.getPosition() << std::endl;
 
 
           pros::delay(20);
         }
       }
+      pros::Task t_trayteleop;
     };
 }
 

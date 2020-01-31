@@ -2,7 +2,46 @@
 
 void skillsAuto()
 {
+  tray.t_trayteleop.suspend();
+  tray.arm_motors.setBrakeMode(AbstractMotor::brakeMode::hold);
+  tray.arm_motors.moveAbsolute(700, 150);
+  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{17_in,-11_in,-40_deg}}, "1");
+  chassis.MotionController.setTarget("1", false);  //Drive forward to initiate
+  chassis.MotionController.waitUntilSettled();
+  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{17_in,0_in,0_deg}}, "2");
+  intake.motors.moveRelative(-200, 100);
+  chassis.MotionController.generatePath({Point{0_in,0_in,45_deg}, Point{12_in,27_in,90_deg}}, "3");
+  chassis.MotionController.setTarget("2", true);  //Drive forward to initiate
+  chassis.MotionController.waitUntilSettled();
 
+  chassis.driveController.turnAngle(-90 * TURN_MULTIPLIER);
+  chassis.MotionController.waitUntilSettled();
+
+  tray.arm_motors.moveAbsolute(40, 180);
+  intake.motors.moveVelocity(200);
+
+
+  chassis.MotionController.setTarget("3", false);  //Drive forward to initiate
+  chassis.MotionController.waitUntilSettled();
+
+  intake.motors.moveVelocity(0);
+
+  intake.motors.moveRelative(-200, 100);
+  pros::delay(1000);
+  tray.arm_motors.moveAbsolute(800, 150);
+  pros::delay(2000);
+  intake.motors.moveRelative(-200, 150);
+
+
+
+  while(1)
+  {
+    std::cout << tray.arm_motors.getEncoder() << std::endl;;
+    pros::delay(20);
+  }
+
+
+  pros::delay(999999999);
 
 
   chassis.MotionController.setTarget("1f_Move_Forward", false);  //Drive forward to initiate
@@ -19,7 +58,7 @@ void skillsAuto()
 
   tray.tilt.moveAbsolute(0, 80);
 
-  tray.intake.move_velocity(-600);
+  //tray.intake.move_velocity(-600);
 
   chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{18_in,0_in,0_deg}}, "2r_Collect_Tower_Cube");
 
@@ -49,7 +88,7 @@ void skillsAuto()
   chassis.MotionController.setTarget("4r", 1);  //Drive forward to collect dem' cubes
   chassis.MotionController.waitUntilSettled();
 
-  tray.intake.move_velocity(0);
+  //tray.intake.move_velocity(0);
 
   chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{12.5_in,0_in,0_deg}}, "5r");
 
@@ -59,7 +98,7 @@ void skillsAuto()
   chassis.MotionController.setTarget("5r", 1);  //Drive forward to collect dem' cubes
   chassis.MotionController.waitUntilSettled();
 
-  tray.intake.move_velocity(-600);
+  //tray.intake.move_velocity(-600);
 
   tray.tilt.moveAbsolute(250, 600);
   pros::delay(200);
@@ -76,7 +115,7 @@ void skillsAuto()
   chassis.MotionController.setTarget("1f_Collect_Cubes_1", 1);  //Drive forward to collect dem' cubes
   chassis.MotionController.waitUntilSettled();
 
-  tray.intake.move_velocity(0);
+  //tray.intake.move_velocity(0);
 
   chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{25.5_in,0_in,0_deg}}, "7f");
 
@@ -94,7 +133,7 @@ void skillsAuto()
   pros::delay(4000);
   tray.tilt.moveVelocity(0);
   intake.motors.moveVelocity(-600);
-  tray.intake.move_velocity(-600);
+  //tray.intake.move_velocity(-600);
   chassis.MotionController.setTarget("8r", 1);  //Drive backwards after score
   // chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{55_in,0_in,0_deg}}, "9f");
   // chassis.MotionController.waitUntilSettled();
@@ -109,7 +148,7 @@ void skillsAuto()
   //
   // intake.motors.moveVelocity(600);
   // tray.tilt.moveAbsolute(0, 80);
-  // tray.intake.move_velocity(-600);
+  // //tray.intake.move_velocity(-600);
   //
   // chassis.MotionController.setTarget("9f", 0);  //Drive backwards after score
   // chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{19_in,5.5_in,0_deg}}, "10s");
@@ -129,7 +168,7 @@ void skillsAuto()
   //
   intake.motors.moveVelocity(0);
   tray.tilt.moveAbsolute(0, 80);
-  tray.intake.move_velocity(0);
+  //tray.intake.move_velocity(0);
 
 }
 
@@ -167,7 +206,7 @@ void autonomous() {
 
   tray.tilt.moveAbsolute(0, 80);
 
-  tray.intake.move_velocity(-600);
+  //tray.intake.move_velocity(-600);
 
   pros::delay(2000);
 
@@ -188,7 +227,7 @@ void autonomous() {
   }
   chassis.MotionController.waitUntilSettled();
   if (CUBE_6 == 1) {
-    tray.intake.move_velocity(0); //Intake, stop, bruh
+    //tray.intake.move_velocity(0); //Intake, stop, bruh
     chassis.MotionController.setTarget("1f_Move_To_Collect_Final_Cube", true);  //Drive forward to collect dem' cubes
     chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{12.5_in,0_in,0_deg}}, "1f_Move_To_Collect_Final_Cube_2");
     chassis.MotionController.waitUntilSettled();
@@ -198,7 +237,7 @@ void autonomous() {
     chassis.MotionController.waitUntilSettled();
 
     intake.motors.moveVelocity(600);
-    tray.intake.move_velocity(-600);
+    //tray.intake.move_velocity(-600);
 
     chassis.MotionController.setTarget("1f_Collect_Cubes_1", false);  //Drive forward to collect dem' cubes
     chassis.MotionController.waitUntilSettled();
@@ -216,7 +255,7 @@ void autonomous() {
 
   pros::delay(2000);
 
-  tray.intake.move_velocity(0); //Intake, stop, bruh
+  //tray.intake.move_velocity(0); //Intake, stop, bruh
 
   if (COLOR == 0) chassis.driveController.turnAngle(125_deg); //Swing dat' ass around red
   else if (COLOR == 1) chassis.driveController.turnAngle(-125_deg); //Swing dat' ass around blue
@@ -230,11 +269,11 @@ void autonomous() {
   pros::delay(4000);
   tray.tilt.moveVelocity(0);
   intake.motors.moveVelocity(-600);
-  tray.intake.move_velocity(-600);
+  //tray.intake.move_velocity(-600);
   chassis.MotionController.setTarget("1f_Move_Back_From_Score", true);  //Drive backwards after score
   chassis.MotionController.waitUntilSettled();
 
   intake.motors.moveVelocity(0);
   tray.tilt.moveAbsolute(0, 80);
-  tray.intake.move_velocity(0);
+  //tray.intake.move_velocity(0);
 }

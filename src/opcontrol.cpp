@@ -22,7 +22,7 @@ void opcontrol()
 	tray.init();
 
 	pros::Task intaketask(intake.teleop);
-	pros::Task traytask(tray.teleop);
+	// pros::Task traytask(tray.trayteleop);
 
 	while(1)
 	{
