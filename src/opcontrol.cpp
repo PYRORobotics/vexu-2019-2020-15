@@ -19,7 +19,37 @@ void opcontrol()
 {
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
 
-	tray.init();
+	// chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{12_in,0_in,0_deg}}, "0");
+  // // chassis.MotionController.setTarget("0", false);  //Drive forward to initiate
+  // chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{6_in,0_in,0_deg}}, "0.1");
+  // chassis.MotionController.waitUntilSettled();
+	//
+  // // chassis.MotionController.setTarget("0.1", true);
+  // chassis.MotionController.waitUntilSettled();
+
+
+	tray.t_trayteleop.suspend();
+  intake.motors.moveVelocity(-180);
+
+  tray.arm_motors.setBrakeMode(AbstractMotor::brakeMode::hold);
+  tray.arm_motors.moveAbsolute(500, 150);
+
+  pros::delay(1000);
+
+  tray.tilt.moveAbsolute(700, 180);
+
+  pros::delay(1200);
+
+  tray.tilt.moveAbsolute(0, 180);
+
+  pros::delay(300);
+
+  tray.arm_motors.moveAbsolute(0, 180);
+
+  intake.motors.moveVelocity(0);
+
+  pros::delay(1000);
+	tray.t_trayteleop.resume();
 
 	pros::Task intaketask(intake.teleop);
 	// pros::Task traytask(tray.trayteleop);

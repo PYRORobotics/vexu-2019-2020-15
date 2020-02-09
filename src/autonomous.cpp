@@ -3,7 +3,39 @@
 void skillsAuto()
 {
   tray.t_trayteleop.suspend();
+
+  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{12_in,0_in,0_deg}}, "0");
+  chassis.MotionController.setTarget("0", false);  //Drive forward to initiate
+  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{6_in,0_in,0_deg}}, "0.1");
+  chassis.MotionController.waitUntilSettled();
+
+  chassis.MotionController.setTarget("0.1", true);
+  chassis.MotionController.waitUntilSettled();
+
+
+  intake.motors.moveVelocity(-180);
+
   tray.arm_motors.setBrakeMode(AbstractMotor::brakeMode::hold);
+  tray.arm_motors.moveAbsolute(500, 150);
+
+  pros::delay(1000);
+
+  tray.tilt.moveAbsolute(800, 180);
+
+  pros::delay(1500);
+
+  tray.tilt.moveAbsolute(0, 180);
+
+  pros::delay(1000);
+
+  tray.arm_motors.moveAbsolute(0, 180);
+
+  intake.motors.moveVelocity(0);
+
+  pros::delay(1500);
+
+
+
   tray.arm_motors.moveAbsolute(700, 150);
   chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{17_in,-11_in,-40_deg}}, "1");
   chassis.MotionController.setTarget("1", false);  //Drive forward to initiate

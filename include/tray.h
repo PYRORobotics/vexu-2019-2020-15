@@ -83,6 +83,7 @@ namespace okapi
             //new functionality: return to home
             // tilt.moveVelocity(0);
             tilt.moveAbsolute(0, 200);
+
             // tilt.moveVelocity(-100);
             //
             // std::cout << tilt.getPosition() << std::endl;
@@ -91,7 +92,9 @@ namespace okapi
           }
           else
           {
-            // tilt.moveVelocity(0);
+            pros::delay(50);
+            if(!(fabs(tilt.getActualVelocity()) > 0.5))
+              tilt.moveVelocity(0);
           }
 
           if(controller_master.get_digital(pros::E_CONTROLLER_DIGITAL_X) && !up)
