@@ -14,6 +14,7 @@
 #define M_TRAY_TILT 3
 #define M_TRAY_ARM_L 5
 #define M_TRAY_ARM_R 15
+#define M_TRAY_CUBELOCK 4
 
 
 

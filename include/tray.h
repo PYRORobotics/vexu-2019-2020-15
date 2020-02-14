@@ -22,6 +22,7 @@ namespace okapi
       // static Motor armL;
       // static Motor armR;
       static okapi::MotorGroup arm_motors;
+      static Motor cube_lock;
 
       PYROTray();
 
@@ -108,12 +109,40 @@ namespace okapi
             up = false;
           }
 
+          if(ADIButton('A').isPressed())
+          {
+            arm_motors.tarePosition();
+            arm_motors.setCurrentLimit(500);
+          }
+          else
+          {
+            arm_motors.setCurrentLimit(2500);
+          }
+
           if(abs(controller_master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y)) > 5)
+          {
+            if(controller_master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y) > 0)
+              arm_motors.setCurrentLimit(2500);
             arm_motors.moveVelocity(controller_master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y));
+          }
           else
             arm_motors.moveVelocity(0);
 
-          std::cout << arm_motors.getPosition() << std::endl;
+          if(arm_motors.getPosition() > 10)
+          {
+            cube_lock.setBrakeMode(AbstractMotor::brakeMode::brake);
+            double angle = 90;
+            // if(angle > 90) angle = 90;
+            cube_lock.moveAbsolute(angle, 200);
+          }
+          else
+          {
+            cube_lock.setBrakeMode(AbstractMotor::brakeMode::brake);
+            cube_lock.moveAbsolute(0, 100);
+          }
+
+          arm_motors.moveVelocity(0);
+
 
 
           pros::delay(20);
