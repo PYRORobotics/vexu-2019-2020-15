@@ -7,3 +7,4 @@ temp.log
 cmake-build-debug/
 CMakeLists.txt
 src/patch.c
+.d/
