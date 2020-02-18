@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2ea25ed5-fb2e-46c4-b3f2-75f4d30f1cd2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.d/autonomous.cpp.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.d/chassis.cpp.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.d/controller.cpp.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.d/initialize.cpp.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.d/input.cpp.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.d/intake.cpp.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.d/main.cpp.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.d/opcontrol.cpp.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.d/patch.c.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.d/pid.cpp.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.d/screen.cpp.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.d/tray.cpp.d" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1QwM4xxXyIIQOaLdvCK2YcN1VWe" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/include" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Shell Script.Make">
+    <configuration name="Make" type="ShConfigurationType">
+      <option name="SCRIPT_PATH" value="$USER_HOME$/.local/bin/prosv5" />
+      <option name="SCRIPT_OPTIONS" value="make" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="" />
+      <option name="INTERPRETER_PATH" value="/usr/bin/python3" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Make+Upload" type="ShConfigurationType">
+      <option name="SCRIPT_PATH" value="$USER_HOME$/.local/bin/prosv5" />
+      <option name="SCRIPT_OPTIONS" value="mu" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="" />
+      <option name="INTERPRETER_PATH" value="/usr/bin/python3" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Upload" type="ShConfigurationType">
+      <option name="SCRIPT_PATH" value="$USER_HOME$/.local/bin/prosv5" />
+      <option name="SCRIPT_OPTIONS" value="upload" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="" />
+      <option name="INTERPRETER_PATH" value="/usr/bin/python3" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Shell Script.Make" />
+      <item itemvalue="Shell Script.Upload" />
+      <item itemvalue="Shell Script.Make+Upload" />
+    </list>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2ea25ed5-fb2e-46c4-b3f2-75f4d30f1cd2" name="Default Changelist" comment="" />
+      <created>1568677017991</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1568677017991</updated>
+      <workItem from="1568677019665" duration="1518000" />
+      <workItem from="1569276414052" duration="771000" />
+      <workItem from="1571711201452" duration="1407000" />
+      <workItem from="1571863800790" duration="599000" />
+      <workItem from="1571965297431" duration="599000" />
+      <workItem from="1572041246829" duration="599000" />
+      <workItem from="1572311400565" duration="599000" />
+      <workItem from="1572476473999" duration="599000" />
+      <workItem from="1572490815593" duration="599000" />
+      <workItem from="1572569956164" duration="648000" />
+      <workItem from="1572661659233" duration="2493000" />
+      <workItem from="1572709981101" duration="599000" />
+      <workItem from="1572988884982" duration="599000" />
+      <workItem from="1573778532659" duration="324000" />
+      <workItem from="1574470827119" duration="639000" />
+      <workItem from="1574554518631" duration="165000" />
+      <workItem from="1581384596110" duration="5705000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
