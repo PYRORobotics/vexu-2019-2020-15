@@ -65,7 +65,7 @@ void opcontrol()
 			tray.t_trayteleop.suspend();
 			intaketask.suspend();
 
-			chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{57_in,2_in,-34_deg}}, "asdf");
+			chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{57_in,14_in,-32_deg}}, "asdf");
 		  chassis.MotionController.setTarget("asdf", false);  //Drive forward to initiate
 			chassis.MotionController.waitUntilSettled();
 
@@ -79,27 +79,32 @@ void opcontrol()
 			chassis.driveController.stop();
 			pros::delay(150);
 
+			intake.motors.moveVelocity(0);
 			tray.tilt.moveAbsolute(1320, 180);
 			pros::delay(700);
 			tray.tilt.moveAbsolute(1320, 50);
 
-
 			pros::delay(2500);
-			intake.motors.moveVelocity(-80);
+			intake.motors.moveVelocity(-10);
 
 			tray.tilt.moveAbsolute(1370, 30);
 			pros::delay(2000);
 			tray.tilt.moveAbsolute(1370, 40);
-			pros::delay(5000);
-
-
-			chassis.driveController.driveVector(0.03, 0);
 			pros::delay(2000);
+
+
+			chassis.driveController.driveVector(0.05, 0);
+			pros::delay(2500);
 			chassis.driveController.stop();
 			pros::delay(150);
 
+			intake.motors.setBrakeMode(AbstractMotor::brakeMode::hold);
 			tray.tilt.moveAbsolute(0, 200);
 			pros::delay(3500);
+
+			tray.arm_motors.moveAbsolute(0, 80);
+			pros::delay(400);
+			intake.motors.moveVelocity(-40);
 
 			chassis.driveController.driveVector(-0.1, 0);
 			pros::delay(350);
@@ -107,6 +112,7 @@ void opcontrol()
 			chassis.driveController.driveVector(-0.5, -0.1);
 			pros::delay(1000);
 
+			intake.motors.setBrakeMode(AbstractMotor::brakeMode::coast);
 			chassis.driveController.stop();
 			intake.motors.moveVelocity(0);
 			tray.t_trayteleop.resume();
