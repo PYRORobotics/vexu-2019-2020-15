@@ -62,15 +62,15 @@ PYROChassis::PYROChassis(): PositionPIDController(20, 80, 10, 5.5, 1.5, 0.000005
                             right_motors({-M_CHASSIS_RF,-M_CHASSIS_RR}),
                             driveController(ChassisControllerFactory::create(
                                     left_motors, right_motors,
-                                    okapi::IterativePosPIDController::Gains{0.00001, 0.00001, 0.000006},   //straight
+/*                                    okapi::IterativePosPIDController::Gains{0.00001, 0.00001, 0.000006},   //straight
                                     okapi::IterativePosPIDController::Gains{0.000, 0.0, 0.0000},    //correct drift
                                     okapi::IterativePosPIDController::Gains{0.001, 0.00001, 0.00000},  //turn
-                                    ratio,
+*/                                    ratio,
                                     {WHEEL_DIAMETER, CHASSIS_WIDTH}
                             )),
                             MotionController(AsyncControllerFactory::motionProfile(
                               0.5,  // Maximum linear velocity of the Chassis in m/s
-                              0.5,  // Maximum linear acceleration of the Chassis in m/s/s
+                              0.8,  // Maximum linear acceleration of the Chassis in m/s/s
                               10.0, // Maximum linear jerk of the Chassis in m/s/s/s
                               driveController // Chassis Controller
                             ))///,
