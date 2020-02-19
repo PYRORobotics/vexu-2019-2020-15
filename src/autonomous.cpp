@@ -221,13 +221,13 @@ void autonomous() {
 
   intake.motors.moveVelocity(-180);
 
-  pros::delay(2000);
+  pros::delay(500);
 
 
   tray.arm_motors.setBrakeMode(AbstractMotor::brakeMode::hold);
   tray.arm_motors.moveAbsolute(300, 150);
 
-  pros::delay(800);
+  pros::delay(500);
 
   tray.tilt.moveAbsolute(700, 180);
 
@@ -251,7 +251,7 @@ void autonomous() {
 
 
 
-  tray.arm_motors.moveAbsolute(0, 180);
+  tray.arm_motors.moveAbsolute(-40, 180);
 
   intake.motors.moveVelocity(0);
 
@@ -261,10 +261,12 @@ void autonomous() {
 
   chassis.MotionController.removePath("0.1");
   chassis.MotionController.setTarget("2", false);
-  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{31_in,23_in,0_deg}}, "3OLD");
-  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{31_in,20_in,0_deg}}, "3");
-  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{4_in,-3_in,0_deg}}, "3.5");
+  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{30_in,23_in,0_deg}}, "3");
+  // chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{31_in,20_in,0_deg}}, "3NEW");
   chassis.MotionController.waitUntilSettled();
+  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{5_in,0_in,0_deg}}, "3.5");
+  tray.arm_motors.tarePosition();
+
 
   chassis.MotionController.setTarget("FORWARD CUBE LENGTH", false);
   chassis.MotionController.waitUntilSettled();
@@ -294,7 +296,7 @@ void autonomous() {
   chassis.MotionController.waitUntilSettled();
 
   chassis.MotionController.setTarget("FORWARD CUBE LENGTH", false);
-  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{15.5_in,-15_in,88_deg}}, "4");
+  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{17.5_in,-15_in,88_deg}}, "4");
   chassis.MotionController.waitUntilSettled();
 
   chassis.MotionController.setTarget("4", true);
