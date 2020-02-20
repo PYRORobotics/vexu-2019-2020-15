@@ -17,10 +17,16 @@ void on_center_button() {
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-	pros::lcd::initialize();
-	pros::lcd::set_text(1, "Hello PROS User!");
+	// pros::lcd::initialize();
+	// pros::lcd::set_text(1, "Hello PROS User!");
+	//
+	// pros::lcd::register_btn1_cb(on_center_button);
 
-	pros::lcd::register_btn1_cb(on_center_button);
+	pros::delay(200);
+//pros::lcd::initialize(); // Uncomment to use PROS's LCD
+Screen screen;
+pros::delay(100);
+
 
 chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{13_in,0_in,0_deg}}, "1fSKILLS_Move_Forward");
 chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{16_in,0_in,0_deg}}, "1f_Move_Forward");

@@ -122,11 +122,20 @@ namespace okapi
           if(abs(controller_master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y)) > 5)
           {
             if(controller_master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y) > 0)
+            {
               arm_motors.setCurrentLimit(2500);
+            }
+            else if(arm_motors.getTargetVelocity() < 0 && arm_motors.getPosition() < 30)
+            {
+              arm_motors.setCurrentLimit(100);
+            }
             arm_motors.moveVelocity(controller_master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y));
           }
           else
+          {
             arm_motors.moveVelocity(0);
+          }
+
 
           if(arm_motors.getPosition() > 10)
           {
@@ -140,8 +149,6 @@ namespace okapi
             cube_lock.setBrakeMode(AbstractMotor::brakeMode::brake);
             cube_lock.moveAbsolute(0, 100);
           }
-
-          arm_motors.moveVelocity(0);
 
 
 

@@ -19,110 +19,81 @@ void opcontrol()
 {
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
 
-	// chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{12_in,0_in,0_deg}}, "0");
-  // // chassis.MotionController.setTarget("0", false);  //Drive forward to initiate
-  // chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{6_in,0_in,0_deg}}, "0.1");
-  // chassis.MotionController.waitUntilSettled();
-	//
-  // // chassis.MotionController.setTarget("0.1", true);
-  // chassis.MotionController.waitUntilSettled();
+	okapi::AverageFilter<250> avgFilterReset;
 
-
-	// tray.t_trayteleop.suspend();
-  // intake.motors.moveVelocity(-180);
-	//
-  // tray.arm_motors.setBrakeMode(AbstractMotor::brakeMode::hold);
-  // tray.arm_motors.moveAbsolute(500, 150);
-	//
-  // pros::delay(1000);
-	//
-  // tray.tilt.moveAbsolute(700, 180);
-	//
-  // pros::delay(1200);
-	//
-  // tray.tilt.moveAbsolute(0, 180);
-	//
-  // pros::delay(300);
-	//
-  // tray.arm_motors.moveAbsolute(0, 180);
-	//
-  // intake.motors.moveVelocity(0);
-	//
-  // pros::delay(1000);
-	// tray.t_trayteleop.resume();
-
-	pros::Task intaketask(intake.teleop);
-	// pros::Task traytask(tray.trayteleop);
-
-	while(1)
+	while(1) // GUI Command
 	{
-		chassis.driveController.tank((float) master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) / 127,
-													 (float) master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y) / 127,
-													 0.05);
-
-		if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP))
+		// std::cout << avgFilterReset.getOutput() << std::endl;
+		if(master.get_digital(pros::E_CONTROLLER_DIGITAL_X) && master.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && master.get_digital(pros::E_CONTROLLER_DIGITAL_A) && master.get_digital(pros::E_CONTROLLER_DIGITAL_B))
+			avgFilterReset.filter(1);
+		else
 		{
-			tray.t_trayteleop.suspend();
-			intaketask.suspend();
-
-			chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{57_in,14_in,-32_deg}}, "asdf");
-		  chassis.MotionController.setTarget("asdf", false);  //Drive forward to initiate
-			chassis.MotionController.waitUntilSettled();
-
-			intake.motors.moveVelocity(600);
-			chassis.driveController.driveVector(0.4, 0);
-			pros::delay(1000);
-			chassis.driveController.stop();
-			pros::delay(150);
-			chassis.driveController.driveVector(-0.16, 0);
-			pros::delay(450);
-			chassis.driveController.stop();
-			pros::delay(150);
-
-			intake.motors.moveVelocity(0);
-			tray.tilt.moveAbsolute(1320, 180);
-			pros::delay(700);
-			tray.tilt.moveAbsolute(1320, 50);
-
-			pros::delay(2500);
-			intake.motors.moveVelocity(-10);
-
-			tray.tilt.moveAbsolute(1370, 30);
-			pros::delay(2000);
-			tray.tilt.moveAbsolute(1370, 40);
-			pros::delay(2000);
-
-
-			chassis.driveController.driveVector(0.05, 0);
-			pros::delay(2500);
-			chassis.driveController.stop();
-			pros::delay(150);
-
-			intake.motors.setBrakeMode(AbstractMotor::brakeMode::hold);
-			tray.tilt.moveAbsolute(0, 200);
-			pros::delay(3500);
-
-			tray.arm_motors.moveAbsolute(0, 80);
-			pros::delay(400);
-			intake.motors.moveVelocity(-40);
-
-			chassis.driveController.driveVector(-0.1, 0);
-			pros::delay(350);
-
-			chassis.driveController.driveVector(-0.5, -0.1);
-			pros::delay(1000);
-
-			intake.motors.setBrakeMode(AbstractMotor::brakeMode::coast);
-			chassis.driveController.stop();
-			intake.motors.moveVelocity(0);
-			tray.t_trayteleop.resume();
-			intaketask.resume();
-
-
+			for(int i = 0; i < 500; i++)
+				avgFilterReset.filter(0);
 		}
 
-	  // intake.teleop(NULL);
-		// tray.teleop(NULL);
-		pros::delay(20);
+		if(avgFilterReset.getOutput() == 1)
+		{
+			// PYRO_Arduino::reset();
+			for(int i = 0; i < 500; i++)
+				avgFilterReset.filter(0);
+		}
+
+		if(Screen::DriverEnabled || !pros::competition::is_disabled())
+		{
+			// okapi::PYRO_Arduino::send("TELEOP");
+			tray.t_trayteleop.resume();
+
+			int startTime = pros::millis();
+
+			if(Screen::Screen_Sponsors != NULL)
+			lv_obj_set_hidden(Screen::Screen_Sponsors,1);
+
+
+			bool arcade = false;
+			bool voltageControl = false;
+
+			// okapi::ADIEncoder LEFT('A', 'B', true);
+			// okapi::ADIEncoder RIGHT('C', 'D');
+
+			pros::Task intaketask(intake.teleop);
+			// pros::Task traytask(tray.trayteleop);
+
+			while (Screen::DriverEnabled || !pros::competition::is_disabled()) // Teleop
+			{
+				//printf("%f %f\n", LEFT.get(), RIGHT.get());
+				chassis.driveController.arcade((float) master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) / 127,
+															 (float) master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X) / 127,
+															 0.05);
+
+
+
+			  // intake.teleop(NULL);
+				// tray.teleop(NULL);
+
+
+
+				if(pros::millis() > 60000 + startTime && pros::millis() < 60100 + startTime)
+					// okapi::PYRO_Arduino::send("HURRYUP");
+
+				if(pros::millis() > 74000 + startTime)
+				// okapi::PYRO_Arduino::send("END");
+
+				if(pros::millis() > 74850 + startTime)
+				{
+					lv_obj_set_hidden(Screen::Screen_Innovate,0);
+				}
+
+				pros::delay(20);
+			}
+
+		}
+		else if(Screen::AutonEnabled)
+		{
+			if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A))
+				autonomous();
+		}
+
+	pros::delay(20);
 	}
 }
