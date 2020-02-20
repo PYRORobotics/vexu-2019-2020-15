@@ -215,154 +215,310 @@ void skillsAuto()
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
+void red(){
+    tray.t_trayteleop.suspend();
+
+    intake.motors.moveVelocity(-180);
+
+    pros::delay(500);
+
+
+    tray.arm_motors.setBrakeMode(AbstractMotor::brakeMode::hold);
+    tray.arm_motors.moveAbsolute(300, 150);
+
+    pros::delay(500);
+
+    tray.tilt.moveAbsolute(700, 180);
+
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{5.5_in,0_in,0_deg}}, "FORWARD CUBE LENGTH");
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{12_in,0_in,0_deg}}, "0");
+    chassis.MotionController.setTarget("0", false);  //Drive forward to initiate
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{6_in,0_in,0_deg}}, "0.1");
+    chassis.MotionController.waitUntilSettled();
+
+    pros::delay(500);
+
+    tray.tilt.moveAbsolute(0, 180);
+
+    pros::delay(1000);
+
+
+    chassis.MotionController.removePath("0");
+    chassis.MotionController.setTarget("0.1", true);
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{12_in,0_in,0_deg}}, "2");
+    chassis.MotionController.waitUntilSettled();
+
+
+
+    tray.arm_motors.moveAbsolute(-40, 180);
+
+    intake.motors.moveVelocity(0);
+
+    pros::delay(500);
+
+    intake.motors.moveVelocity(180);
+
+    chassis.MotionController.removePath("0.1");
+    chassis.MotionController.setTarget("2", false);
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{30_in,23_in,0_deg}}, "3");
+    // chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{31_in,20_in,0_deg}}, "3NEW");
+    chassis.MotionController.waitUntilSettled();
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{5_in,0_in,0_deg}}, "3.5");
+    tray.arm_motors.tarePosition();
+
+
+    chassis.MotionController.setTarget("FORWARD CUBE LENGTH", false);
+    chassis.MotionController.waitUntilSettled();
+
+    chassis.MotionController.setTarget("FORWARD CUBE LENGTH", false);
+    chassis.MotionController.waitUntilSettled();
+
+    chassis.MotionController.setTarget("FORWARD CUBE LENGTH", false);
+    chassis.MotionController.waitUntilSettled();
+
+
+    chassis.MotionController.removePath("2");
+    chassis.MotionController.setTarget("3", true);
+    // chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{10_in,0_in,0_deg}}, "4");
+    // chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{4_in,0_in,0_deg}}, "4.5");
+    chassis.MotionController.waitUntilSettled();
+
+    chassis.MotionController.setTarget("3.5", false);
+    chassis.MotionController.waitUntilSettled();
+
+
+    chassis.MotionController.removePath("3");
+    chassis.MotionController.setTarget("FORWARD CUBE LENGTH", false);
+    chassis.MotionController.waitUntilSettled();
+
+    chassis.MotionController.setTarget("FORWARD CUBE LENGTH", false);
+    chassis.MotionController.waitUntilSettled();
+
+    chassis.MotionController.setTarget("FORWARD CUBE LENGTH", false);
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{17.5_in,-15_in,88_deg}}, "4");
+    chassis.MotionController.waitUntilSettled();
+
+    chassis.MotionController.setTarget("4", true);
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{30_in,0_in,0_deg}}, "5");
+    chassis.MotionController.waitUntilSettled();
+
+    chassis.MotionController.setTarget("5", false);
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{44_in,-16_in,0_deg}}, "6");
+    chassis.MotionController.waitUntilSettled();
+
+    chassis.MotionController.setTarget("6", false);
+    // chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{42_in,16_in,45_deg}}, "7");
+    chassis.MotionController.waitUntilSettled();
+
+    chassis.driveController.setMaxVelocity(15);
+    chassis.driveController.turnAngle(-45_deg);
+
+    chassis.driveController.setMaxVelocity(200);
+
+
+
+    chassis.driveController.driveVector(0.4, 0);
+    pros::delay(1800);
+    chassis.driveController.stop();
+    pros::delay(150);
+    chassis.driveController.driveVector(-0.16, 0);
+    pros::delay(450);
+    chassis.driveController.stop();
+    pros::delay(150);
+
+    intake.motors.moveVelocity(0);
+    tray.tilt.moveAbsolute(1320, 180);
+    pros::delay(700);
+    tray.tilt.moveAbsolute(1320, 50);
+
+    pros::delay(2500);
+    intake.motors.moveVelocity(-10);
+
+    tray.tilt.moveAbsolute(1370, 30);
+    pros::delay(2000);
+    tray.tilt.moveAbsolute(1370, 40);
+    pros::delay(2000);
+
+
+    chassis.driveController.driveVector(0.05, 0);
+    pros::delay(2500);
+    chassis.driveController.stop();
+    pros::delay(150);
+
+    intake.motors.setBrakeMode(AbstractMotor::brakeMode::hold);
+    tray.tilt.moveAbsolute(0, 200);
+    pros::delay(3500);
+
+    tray.arm_motors.moveAbsolute(0, 80);
+    pros::delay(400);
+    intake.motors.moveVelocity(-40);
+
+    chassis.driveController.driveVector(-0.1, 0);
+    pros::delay(350);
+
+    chassis.driveController.driveVector(-0.5, 0.1);//0.1
+    pros::delay(1000);
+
+    intake.motors.setBrakeMode(AbstractMotor::brakeMode::coast);
+    chassis.driveController.stop();
+    intake.motors.moveVelocity(0);
+}
+
+void blue(){
+    tray.t_trayteleop.suspend();
+
+    intake.motors.moveVelocity(-180);
+
+    pros::delay(500);
+
+
+    tray.arm_motors.setBrakeMode(AbstractMotor::brakeMode::hold);
+    tray.arm_motors.moveAbsolute(300, 150);
+
+    pros::delay(500);
+
+    tray.tilt.moveAbsolute(700, 180);
+
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{5.5_in,0_in,0_deg}}, "FORWARD CUBE LENGTH");
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{3_in,0_in,0_deg}}, "FORWARD CUBE LENGTH 2");
+
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{12_in,0_in,0_deg}}, "0");
+    chassis.MotionController.setTarget("0", false);  //Drive forward to initiate
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{6_in,0_in,0_deg}}, "0.1");
+    chassis.MotionController.waitUntilSettled();
+
+    pros::delay(500);
+
+    tray.tilt.moveAbsolute(0, 180);
+
+    pros::delay(1000);
+
+
+    chassis.MotionController.removePath("0");
+    chassis.MotionController.setTarget("0.1", true);
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{12_in,0_in,0_deg}}, "2");
+    chassis.MotionController.waitUntilSettled();
+
+
+
+    tray.arm_motors.moveAbsolute(-40, 180);
+
+    intake.motors.moveVelocity(0);
+
+    pros::delay(500);
+
+    intake.motors.moveVelocity(180);
+
+    chassis.MotionController.removePath("0.1");
+    chassis.MotionController.setTarget("2", false);
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{30_in,-23_in,0_deg}}, "3");
+    // chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{31_in,20_in,0_deg}}, "3NEW");
+    chassis.MotionController.waitUntilSettled();
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{5_in,0_in,0_deg}}, "3.5");
+    tray.arm_motors.tarePosition();
+
+
+    chassis.MotionController.setTarget("FORWARD CUBE LENGTH", false);
+    chassis.MotionController.waitUntilSettled();
+
+    chassis.MotionController.setTarget("FORWARD CUBE LENGTH", false);
+    chassis.MotionController.waitUntilSettled();
+
+    chassis.MotionController.setTarget("FORWARD CUBE LENGTH", false);
+    chassis.MotionController.waitUntilSettled();
+
+
+    chassis.MotionController.removePath("2");
+    chassis.MotionController.setTarget("3", true);
+    // chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{10_in,0_in,0_deg}}, "4");
+    // chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{4_in,0_in,0_deg}}, "4.5");
+    chassis.MotionController.waitUntilSettled();
+
+    chassis.MotionController.setTarget("3.5", false);
+    chassis.MotionController.waitUntilSettled();
+
+
+    chassis.MotionController.removePath("3");
+    chassis.MotionController.setTarget("FORWARD CUBE LENGTH", false);
+    chassis.MotionController.waitUntilSettled();
+
+    chassis.MotionController.setTarget("FORWARD CUBE LENGTH", false);
+    chassis.MotionController.waitUntilSettled();
+
+    chassis.MotionController.setTarget("FORWARD CUBE LENGTH 2", false);
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{17_in,15_in,-85_deg}}, "4");
+    chassis.MotionController.waitUntilSettled();
+
+    chassis.MotionController.setTarget("4", true);
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{30_in,0_in,0_deg}}, "5");
+    chassis.MotionController.waitUntilSettled();
+
+    chassis.MotionController.setTarget("5", false);
+    chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{44_in,12_in,0_deg}}, "6");
+    chassis.MotionController.waitUntilSettled();
+
+    chassis.MotionController.setTarget("6", false);
+    // chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{42_in,16_in,45_deg}}, "7");
+    chassis.MotionController.waitUntilSettled();
+
+    chassis.driveController.setMaxVelocity(15);
+    chassis.driveController.turnAngle(47_deg);
+
+    chassis.driveController.setMaxVelocity(200);
+
+
+
+    chassis.driveController.driveVector(0.4, 0);
+    pros::delay(1800);
+    chassis.driveController.stop();
+    pros::delay(150);
+    chassis.driveController.driveVector(-0.16, 0);
+    pros::delay(450);
+    chassis.driveController.stop();
+    pros::delay(150);
+
+    intake.motors.moveVelocity(0);
+    tray.tilt.moveAbsolute(1320, 180);
+    pros::delay(700);
+    tray.tilt.moveAbsolute(1320, 50);
+
+    pros::delay(2500);
+    intake.motors.moveVelocity(-10);
+
+    tray.tilt.moveAbsolute(1370, 30);
+    pros::delay(2000);
+    tray.tilt.moveAbsolute(1370, 40);
+    pros::delay(2000);
+
+
+    chassis.driveController.driveVector(0.05, 0);
+    pros::delay(2500);
+    chassis.driveController.stop();
+    pros::delay(150);
+
+    intake.motors.setBrakeMode(AbstractMotor::brakeMode::hold);
+    tray.tilt.moveAbsolute(0, 200);
+    pros::delay(3500);
+
+    tray.arm_motors.moveAbsolute(0, 80);
+    pros::delay(400);
+    intake.motors.moveVelocity(-40);
+
+    chassis.driveController.driveVector(-0.1, 0);
+    pros::delay(350);
+
+    chassis.driveController.driveVector(-0.5, -0.1);//0.1
+    pros::delay(1000);
+
+    intake.motors.setBrakeMode(AbstractMotor::brakeMode::coast);
+    chassis.driveController.stop();
+    intake.motors.moveVelocity(0);
+}
+
 void autonomous() {
 
-  tray.t_trayteleop.suspend();
-
-  intake.motors.moveVelocity(-180);
-
-  pros::delay(500);
-
-
-  tray.arm_motors.setBrakeMode(AbstractMotor::brakeMode::hold);
-  tray.arm_motors.moveAbsolute(300, 150);
-
-  pros::delay(500);
-
-  tray.tilt.moveAbsolute(700, 180);
-
-  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{5.5_in,0_in,0_deg}}, "FORWARD CUBE LENGTH");
-  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{12_in,0_in,0_deg}}, "0");
-  chassis.MotionController.setTarget("0", false);  //Drive forward to initiate
-  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{6_in,0_in,0_deg}}, "0.1");
-  chassis.MotionController.waitUntilSettled();
-
-  pros::delay(500);
-
-  tray.tilt.moveAbsolute(0, 180);
-
-  pros::delay(1000);
-
-
-  chassis.MotionController.removePath("0");
-  chassis.MotionController.setTarget("0.1", true);
-  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{12_in,0_in,0_deg}}, "2");
-  chassis.MotionController.waitUntilSettled();
-
-
-
-  tray.arm_motors.moveAbsolute(-40, 180);
-
-  intake.motors.moveVelocity(0);
-
-  pros::delay(500);
-
-  intake.motors.moveVelocity(180);
-
-  chassis.MotionController.removePath("0.1");
-  chassis.MotionController.setTarget("2", false);
-  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{30_in,23_in,0_deg}}, "3");
-  // chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{31_in,20_in,0_deg}}, "3NEW");
-  chassis.MotionController.waitUntilSettled();
-  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{5_in,0_in,0_deg}}, "3.5");
-  tray.arm_motors.tarePosition();
-
-
-  chassis.MotionController.setTarget("FORWARD CUBE LENGTH", false);
-  chassis.MotionController.waitUntilSettled();
-
-  chassis.MotionController.setTarget("FORWARD CUBE LENGTH", false);
-  chassis.MotionController.waitUntilSettled();
-
-  chassis.MotionController.setTarget("FORWARD CUBE LENGTH", false);
-  chassis.MotionController.waitUntilSettled();
-
-
-  chassis.MotionController.removePath("2");
-  chassis.MotionController.setTarget("3", true);
-  // chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{10_in,0_in,0_deg}}, "4");
-  // chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{4_in,0_in,0_deg}}, "4.5");
-  chassis.MotionController.waitUntilSettled();
-
-  chassis.MotionController.setTarget("3.5", false);
-  chassis.MotionController.waitUntilSettled();
-
-
-  chassis.MotionController.removePath("3");
-  chassis.MotionController.setTarget("FORWARD CUBE LENGTH", false);
-  chassis.MotionController.waitUntilSettled();
-
-  chassis.MotionController.setTarget("FORWARD CUBE LENGTH", false);
-  chassis.MotionController.waitUntilSettled();
-
-  chassis.MotionController.setTarget("FORWARD CUBE LENGTH", false);
-  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{17.5_in,-15_in,88_deg}}, "4");
-  chassis.MotionController.waitUntilSettled();
-
-  chassis.MotionController.setTarget("4", true);
-  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{30_in,0_in,0_deg}}, "5");
-  chassis.MotionController.waitUntilSettled();
-
-  chassis.MotionController.setTarget("5", false);
-  chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{44_in,-16_in,0_deg}}, "6");
-  chassis.MotionController.waitUntilSettled();
-
-  chassis.MotionController.setTarget("6", false);
-  // chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{42_in,16_in,45_deg}}, "7");
-  chassis.MotionController.waitUntilSettled();
-
-  chassis.driveController.setMaxVelocity(15);
-  chassis.driveController.turnAngle(-45_deg);
-
-  chassis.driveController.setMaxVelocity(200);
-
-
-
-  chassis.driveController.driveVector(0.4, 0);
-  pros::delay(1800);
-  chassis.driveController.stop();
-  pros::delay(150);
-  chassis.driveController.driveVector(-0.16, 0);
-  pros::delay(450);
-  chassis.driveController.stop();
-  pros::delay(150);
-
-  intake.motors.moveVelocity(0);
-  tray.tilt.moveAbsolute(1320, 180);
-  pros::delay(700);
-  tray.tilt.moveAbsolute(1320, 50);
-
-  pros::delay(2500);
-  intake.motors.moveVelocity(-10);
-
-  tray.tilt.moveAbsolute(1370, 30);
-  pros::delay(2000);
-  tray.tilt.moveAbsolute(1370, 40);
-  pros::delay(2000);
-
-
-  chassis.driveController.driveVector(0.05, 0);
-  pros::delay(2500);
-  chassis.driveController.stop();
-  pros::delay(150);
-
-  intake.motors.setBrakeMode(AbstractMotor::brakeMode::hold);
-  tray.tilt.moveAbsolute(0, 200);
-  pros::delay(3500);
-
-  tray.arm_motors.moveAbsolute(0, 80);
-  pros::delay(400);
-  intake.motors.moveVelocity(-40);
-
-  chassis.driveController.driveVector(-0.1, 0);
-  pros::delay(350);
-
-  chassis.driveController.driveVector(-0.5, 0.1);
-  pros::delay(1000);
-
-  intake.motors.setBrakeMode(AbstractMotor::brakeMode::coast);
-  chassis.driveController.stop();
-  intake.motors.moveVelocity(0);
+  //red();
+  blue();
 
   //
   //

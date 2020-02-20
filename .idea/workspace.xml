@@ -10,18 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ea25ed5-fb2e-46c4-b3f2-75f4d30f1cd2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.d/autonomous.cpp.d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.d/chassis.cpp.d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.d/controller.cpp.d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.d/initialize.cpp.d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.d/input.cpp.d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.d/intake.cpp.d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.d/main.cpp.d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.d/opcontrol.cpp.d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.d/patch.c.d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.d/pid.cpp.d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.d/screen.cpp.d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.d/tray.cpp.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/autonomous.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/autonomous.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +33,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -120,6 +111,8 @@
       <workItem from="1574470827119" duration="639000" />
       <workItem from="1574554518631" duration="165000" />
       <workItem from="1581384596110" duration="5705000" />
+      <workItem from="1582156400472" duration="828000" />
+      <workItem from="1582157526165" duration="6662000" />
     </task>
     <servers />
   </component>
@@ -138,5 +131,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="743" y="161" width="992" height="734" key="SettingsEditor" timestamp="1582157226918">
+      <screen x="0" y="31" width="1920" height="1013" />
+    </state>
+    <state x="743" y="161" width="992" height="734" key="SettingsEditor/0.31.1920.1013@0.31.1920.1013" timestamp="1582157226918" />
   </component>
 </project>
