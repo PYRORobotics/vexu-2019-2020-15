@@ -428,7 +428,7 @@ void auton_blue0()
       chassis.MotionController.waitUntilSettled();
 
       chassis.driveController.setMaxVelocity(15);
-      chassis.driveController.turnAngle(47_deg);
+      chassis.driveController.turnAngle(45_deg);
 
       chassis.driveController.setMaxVelocity(200);
 
@@ -479,6 +479,18 @@ void auton_blue0()
       intake.motors.setBrakeMode(AbstractMotor::brakeMode::coast);
       chassis.driveController.stop();
       intake.motors.moveVelocity(0);
+
+      // chassis.MotionController.removePath("FORWARD CUBE LENGTH");
+      // chassis.MotionController.removePath("FORWARD CUBE LENGTH 2");
+      // chassis.MotionController.removePath("0");
+      // chassis.MotionController.removePath("0.1");
+      // chassis.MotionController.removePath("FORWARD CUBE LENGTH");
+      // chassis.MotionController.removePath("FORWARD CUBE LENGTH");
+      // chassis.MotionController.removePath("FORWARD CUBE LENGTH");
+      // chassis.MotionController.removePath("FORWARD CUBE LENGTH");
+      // chassis.MotionController.removePath("FORWARD CUBE LENGTH");
+      // chassis.MotionController.removePath("FORWARD CUBE LENGTH");
+
 }
 void auton_blue1()
 {
