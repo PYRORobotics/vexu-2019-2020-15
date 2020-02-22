@@ -139,7 +139,7 @@ namespace okapi
             }
 
 
-            if(arm_motors.getPosition() > 10)
+            if(arm_motors.getPosition() > 10 && tilt.getPosition() < 400)
             {
               cube_lock.setBrakeMode(AbstractMotor::brakeMode::brake);
               double angle = 90;
