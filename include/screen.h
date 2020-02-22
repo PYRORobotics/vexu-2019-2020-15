@@ -11,7 +11,7 @@ typedef  FILE * pc_file_t;
 
 class Screen
 {
-private:
+public:
   enum modeType
   {
     Competition,

@@ -39,6 +39,110 @@ void opcontrol()
 				avgFilterReset.filter(0);
 		}
 
+
+		if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT))
+		{
+			lv_obj_set_hidden(Screen::Screen_Title_PYRO,1);
+			lv_obj_set_hidden(Screen::Screen_Title_Btn_Continue,1);
+
+			lv_obj_set_hidden(Screen::Screen_Competition_Btn_Main,0);
+			lv_obj_set_hidden(Screen::Screen_Driver_Btn_Main,0);
+			lv_obj_set_hidden(Screen::Screen_Auton_Btn_Main,0);
+			lv_obj_set_hidden(Screen::Screen_Info_Btn_Main,0);
+			lv_obj_set_hidden(Screen::Screen_Mode_Help_Label,0);
+
+
+			lv_label_set_text(Screen::Screen_Mode_Title, "      Competition Mode");
+			lv_obj_set_hidden(Screen::Screen_Mode_Title,0);
+			lv_obj_set_hidden(Screen::Screen_Mode_BG,0);
+			lv_obj_set_hidden(Screen::Screen_Field_Ready_Label,0);
+			lv_obj_set_hidden(Screen::Screen_Red_Auton_Btns,0);
+			lv_obj_set_hidden(Screen::Screen_Blue_Auton_Btns,0);
+			lv_obj_set_hidden(Screen::Screen_Mode_REDBLUE_Label,0);
+			lv_obj_set_hidden(Screen::Screen_Mode_Desc_Label,0);
+			lv_obj_set_hidden(Screen::Screen_Auton_Start_Btn_Label,1);
+			lv_obj_set_hidden(Screen::Screen_Driver_Start_Btn_Label,1);
+			Screen::DriverEnabled = true;
+			Screen::AutonEnabled = false;
+			Screen::currentMode = Screen::Competition;
+
+	    std::string str = "    Red " + std::string("1") + " Selected!";
+
+	    lv_label_set_text(Screen::Screen_Mode_Desc_Label, str.c_str());
+	    lv_label_set_text(Screen::Screen_Field_Ready_Label, "\n        Ready - Good Luck!");
+
+      Screen::selectedAuton = red0;
+		}
+		else if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP))
+		{
+			lv_obj_set_hidden(Screen::Screen_Title_PYRO,1);
+			lv_obj_set_hidden(Screen::Screen_Title_Btn_Continue,1);
+
+			lv_obj_set_hidden(Screen::Screen_Competition_Btn_Main,0);
+			lv_obj_set_hidden(Screen::Screen_Driver_Btn_Main,0);
+			lv_obj_set_hidden(Screen::Screen_Auton_Btn_Main,0);
+			lv_obj_set_hidden(Screen::Screen_Info_Btn_Main,0);
+			lv_obj_set_hidden(Screen::Screen_Mode_Help_Label,0);
+
+
+			lv_label_set_text(Screen::Screen_Mode_Title, "      Competition Mode");
+			lv_obj_set_hidden(Screen::Screen_Mode_Title,0);
+			lv_obj_set_hidden(Screen::Screen_Mode_BG,0);
+			lv_obj_set_hidden(Screen::Screen_Field_Ready_Label,0);
+			lv_obj_set_hidden(Screen::Screen_Red_Auton_Btns,0);
+			lv_obj_set_hidden(Screen::Screen_Blue_Auton_Btns,0);
+			lv_obj_set_hidden(Screen::Screen_Mode_REDBLUE_Label,0);
+			lv_obj_set_hidden(Screen::Screen_Mode_Desc_Label,0);
+			lv_obj_set_hidden(Screen::Screen_Auton_Start_Btn_Label,1);
+			lv_obj_set_hidden(Screen::Screen_Driver_Start_Btn_Label,1);
+			Screen::DriverEnabled = true;
+			Screen::AutonEnabled = false;
+			Screen::currentMode = Screen::Competition;
+
+	    std::string str = "    Skills " + std::string("1") + " Selected!";
+
+	    lv_label_set_text(Screen::Screen_Mode_Desc_Label, str.c_str());
+	    lv_label_set_text(Screen::Screen_Field_Ready_Label, "\n        Ready - Good Luck!");
+
+      Screen::selectedAuton = redSkills0;
+		}
+		else if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT))
+		{
+			lv_obj_set_hidden(Screen::Screen_Title_PYRO,1);
+			lv_obj_set_hidden(Screen::Screen_Title_Btn_Continue,1);
+
+			lv_obj_set_hidden(Screen::Screen_Competition_Btn_Main,0);
+			lv_obj_set_hidden(Screen::Screen_Driver_Btn_Main,0);
+			lv_obj_set_hidden(Screen::Screen_Auton_Btn_Main,0);
+			lv_obj_set_hidden(Screen::Screen_Info_Btn_Main,0);
+			lv_obj_set_hidden(Screen::Screen_Mode_Help_Label,0);
+
+			
+			lv_label_set_text(Screen::Screen_Mode_Title, "      Competition Mode");
+			lv_obj_set_hidden(Screen::Screen_Mode_Title,0);
+			lv_obj_set_hidden(Screen::Screen_Mode_BG,0);
+			lv_obj_set_hidden(Screen::Screen_Field_Ready_Label,0);
+			lv_obj_set_hidden(Screen::Screen_Red_Auton_Btns,0);
+			lv_obj_set_hidden(Screen::Screen_Blue_Auton_Btns,0);
+			lv_obj_set_hidden(Screen::Screen_Mode_REDBLUE_Label,0);
+			lv_obj_set_hidden(Screen::Screen_Mode_Desc_Label,0);
+			lv_obj_set_hidden(Screen::Screen_Auton_Start_Btn_Label,1);
+			lv_obj_set_hidden(Screen::Screen_Driver_Start_Btn_Label,1);
+			Screen::DriverEnabled = true;
+			Screen::AutonEnabled = false;
+			Screen::currentMode = Screen::Competition;
+
+	    std::string str = "    Blue " + std::string("1") + " Selected!";
+
+	    lv_label_set_text(Screen::Screen_Mode_Desc_Label, str.c_str());
+	    lv_label_set_text(Screen::Screen_Field_Ready_Label, "\n        Ready - Good Luck!");
+
+      Screen::selectedAuton = blue0;
+		}
+
+
+
+
 		if(Screen::DriverEnabled || !pros::competition::is_disabled())
 		{
 			// okapi::PYRO_Arduino::send("TELEOP");
