@@ -43,7 +43,7 @@ namespace okapi
         pros::Controller controller_master(pros::E_CONTROLLER_MASTER);
         pros::Controller controller_partner(pros::E_CONTROLLER_PARTNER);
         bool up = false;
-        while(1)
+        while((pros::competition::get_status() & COMPETITION_DISABLED) == false)
         {
           // if(controller_master.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
           // {

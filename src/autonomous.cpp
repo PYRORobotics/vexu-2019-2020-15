@@ -246,7 +246,7 @@ void auton_red0()
       chassis.MotionController.waitUntilSettled();
 
       chassis.MotionController.setTarget("5", false);
-      chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{44_in,-16_in,0_deg}}, "6");
+      chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{42_in,-14_in,0_deg}}, "6");
       chassis.MotionController.waitUntilSettled();
 
       chassis.MotionController.setTarget("6", false);
@@ -254,7 +254,7 @@ void auton_red0()
       chassis.MotionController.waitUntilSettled();
 
       chassis.driveController.setMaxVelocity(15);
-      chassis.driveController.turnAngle(-45_deg);
+      chassis.driveController.turnAngle(-43_deg);
 
       chassis.driveController.setMaxVelocity(200);
 
@@ -659,7 +659,7 @@ void auton_skills0()
   chassis.driveController.setMaxVelocity(10);
   chassis.driveController.turnAngle(18_deg);
   chassis.driveController.setMaxVelocity(200);
-
+//
   tray.cube_lock.moveAbsolute(0, 200);
 
   intake.motors.moveVelocity(150);
