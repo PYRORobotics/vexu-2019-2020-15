@@ -129,7 +129,7 @@ void autonomous()
 
     // Run selected auton routine
     autonomousSelector(Screen::selectedAuton);
-    
+
     // auton_blue0();
     // Remove lift task from scheduler
     // lifttaskauto.suspend();
@@ -173,6 +173,7 @@ void auton_red0()
       tray.tilt.moveAbsolute(700, 180);
 
       chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{5.5_in,0_in,0_deg}}, "FORWARD CUBE LENGTH");
+      chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{3_in,0_in,0_deg}}, "FORWARD CUBE LENGTH 2");
       chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{12_in,0_in,0_deg}}, "0");
       chassis.MotionController.setTarget("0", false);  //Drive forward to initiate
       chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{6_in,0_in,0_deg}}, "0.1");
@@ -203,9 +204,9 @@ void auton_red0()
       chassis.MotionController.removePath("0.1");
       chassis.MotionController.setTarget("2", false);
       chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{30_in,23_in,0_deg}}, "3");
+      chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{5_in,0_in,0_deg}}, "3.5");
       // chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{31_in,20_in,0_deg}}, "3NEW");
       chassis.MotionController.waitUntilSettled();
-      chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{5_in,0_in,0_deg}}, "3.5");
       tray.arm_motors.tarePosition();
 
 
@@ -236,7 +237,7 @@ void auton_red0()
       chassis.MotionController.setTarget("FORWARD CUBE LENGTH", false);
       chassis.MotionController.waitUntilSettled();
 
-      chassis.MotionController.setTarget("FORWARD CUBE LENGTH", false);
+      chassis.MotionController.setTarget("FORWARD CUBE LENGTH 2", false);
       chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{17.5_in,-15_in,88_deg}}, "4");
       chassis.MotionController.waitUntilSettled();
 
@@ -377,9 +378,9 @@ void auton_blue0()
       chassis.MotionController.removePath("0.1");
       chassis.MotionController.setTarget("2", false);
       chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{30_in,-23_in,0_deg}}, "3");
+      chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{5_in,0_in,0_deg}}, "3.5");
       // chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{31_in,20_in,0_deg}}, "3NEW");
       chassis.MotionController.waitUntilSettled();
-      chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{5_in,0_in,0_deg}}, "3.5");
       tray.arm_motors.tarePosition();
 
 
@@ -419,7 +420,7 @@ void auton_blue0()
       chassis.MotionController.waitUntilSettled();
 
       chassis.MotionController.setTarget("5", false);
-      chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{44_in,12_in,0_deg}}, "6");
+      chassis.MotionController.generatePath({Point{0_in,0_in,0_deg}, Point{42_in,12_in,0_deg}}, "6");
       chassis.MotionController.waitUntilSettled();
 
       chassis.MotionController.setTarget("6", false);
@@ -456,7 +457,7 @@ void auton_blue0()
       pros::delay(2000);
 
 
-      chassis.driveController.driveVector(0.05, 0);
+      chassis.driveController.driveVector(0.04, 0);
       pros::delay(2500);
       chassis.driveController.stop();
       pros::delay(150);
